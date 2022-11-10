@@ -1,16 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text } from 'react-native';
-import HorizontalScrolly from '../components/HorizontalScrolly';
+import { useState } from 'react';
+import { StyleSheet, SafeAreaView, View } from 'react-native';
+import HorizontalCalendar from '../components/HorizontalCalendar';
 
 
 
 export default function Calendar() {
 
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
     return (
-        <View style={styles.container}>
-            <StatusBar style="auto"/>
-            <HorizontalScrolly/>
-        </View>
+        <SafeAreaView style={styles.container}>
+            <View>
+                <HorizontalCalendar
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+            />
+            </View>
+        </SafeAreaView>
     );
 };
 

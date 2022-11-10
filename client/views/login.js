@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Image, TextInput, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 
 export default function Login() {
@@ -8,19 +8,19 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar style="auto"/>
       <Image style={styles.text} source={require('../assets/Frame.png')}/>
       <Image style={styles.marble} source={require('../assets/output-onlinejpgtools.png')}/>
-      <View style={styles.inputView}>
+      <SafeAreaView style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
           placeholder="EMAIL"
           placeholderTextColor="#353535"
           onChangeText={(email) => setEmail(email)}
         />
-      </View>
-      <View style={styles.inputView}>
+      </SafeAreaView>
+      <SafeAreaView style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
           placeholder="PASSWORD"
@@ -28,11 +28,11 @@ export default function Login() {
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
-      </View>
+      </SafeAreaView>
       <TouchableOpacity style={styles.button} >
         <Image style={styles.login} source={require('../assets/Group.png')}/>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     height: 300,
     width: 300,
-    bottom: '40%'
+    bottom: '45%'
   },
   text: {
     position: 'absolute',
-    bottom: '60%'
+    bottom: '70%'
   },
   inputView: {
     bottom: '-20%',
