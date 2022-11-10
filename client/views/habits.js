@@ -12,9 +12,9 @@ export default function Calendar() {
         <SafeAreaView style={styles.container}>
             <View>
                 <HorizontalCalendar
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
-            />
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
+                />
             </View>
         </SafeAreaView>
     );
