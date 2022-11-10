@@ -24,14 +24,6 @@ function getDayString(date) {
   return date.toString().split(' ')[0];
 }
 
-function isSameDay(date1, date2) {
-  return date1.getDate() === date2.getDate();
-}
-
-// function isToday(date) {
-//   return new Date().getDate() == date.getDate();
-// }
-
 function generateHorizontalCalendarDates(daysBack, daysForward) {
   const today = new Date();
   let result = []; 
@@ -61,19 +53,19 @@ export default function HorizontalCalendar({selectedDate, setSelectedDate}) {
     setSelectedDate(date);
   };
 
-  const renderItem = ({ item, index }) => {
-    const dayNumber = item.getDate();
-    const dayString = getDayString(item);
-    const isActive = isSameDay(selectedDate, item);
+  const renderItem = ({ item }) => {
+    const date = item;
+    const dayNumber = date.getDate();
+    const dayString = getDayString(date);
+    const isActive = selectedDate.getDate() === date.getDate();
     return (
       <Pressable
-        onPress={() => onDatePress(item)}
-        style={[styles.item, isActive && { backgroundColor: 'white' }]}>
+        onPress={() => onDatePress(date)}
+        style={[styles.date, isActive && { backgroundColor: 'white' }]}>
         <Text style={[styles.dateOutput, isActive && styles.activeText]}>
           {dayNumber}
         </Text>
         <Text style={[styles.dayStyle, isActive && styles.activeText]}>
-          {/* {isToday(item) ? 'today' : dayString} */}
           {dayString}
         </Text>
       </Pressable>
@@ -113,7 +105,7 @@ const styles = StyleSheet.create({
   activeText: {
     color: '#7197AC',
   },
-  item: {
+  date: {
     width: ITEM_WIDTH,
     height: ITEM_HEIGHT,
     borderRadius: 50,
