@@ -1,7 +1,8 @@
-import { useMemo, useRef, useEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { useMemo, useRef, useEffect, useState } from 'react';
+import { ScrollView, Dimensions } from 'react-native';
 
 import CalendarItem from './CalendarItem.js';
+import CalendarHeader from './CalendarHeader.js';
 
 function dateSubtractDays(date, days) {
   var result = new Date(date);
@@ -22,7 +23,6 @@ function generateHorizontalCalendarDates(daysBack, daysForward) {
   for (let i = 0; i < daysBack; i++) {
     result[i] = dateSubtractDays(today, i);
   }
-  // return result.reverse();
   result.reverse();
   // adding future days
   for (let i = 1; i < daysForward; i++) {
@@ -34,6 +34,7 @@ function generateHorizontalCalendarDates(daysBack, daysForward) {
 export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
   const datePast = 180;
   const dateFuture = 90;
+  const x = Dimensions.get('window').width;
   const scroller = useRef();
 
   const dates = useMemo(() => {
@@ -45,19 +46,28 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
   }, [])
 
   const scrollToToday = () => {
-    scroller.current.scrollTo({ x: 270 * 48.1, y: 0 });
+    scroller.current.scrollTo({ x: x * 42.45, y: 0 });
+    setSelectedDate && setSelectedDate(new Date());
   }
 
   return (
+    <>
+      <CalendarHeader 
+        selectedDate={selectedDate} 
+        setSelectedDate={setSelectedDate}
+        scrollToToday={scrollToToday}
+        scroller={scroller}
+      />
+      <ScrollView ref={scroller} horizontal={true}>
+        {dates.map((date) => {
+          return <CalendarItem 
+            date={date} 
+            selectedDate={selectedDate} 
+            setSelectedDate={setSelectedDate}
+          />
+        })}
+      </ScrollView>
+    </>
     
-    <ScrollView ref={scroller} horizontal={true}>
-      {dates.map((date) => {
-        return <CalendarItem 
-          date={date} 
-          selectedDate={selectedDate} 
-          setSelectedDate={setSelectedDate}
-        />
-      })}
-    </ScrollView>
   );
 }
