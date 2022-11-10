@@ -5,7 +5,7 @@ import Habits from './views/habits';
 export default function App() {
   // state outside router
 
-  return <Habits />
+  return <Calendar />
 
 }
 
