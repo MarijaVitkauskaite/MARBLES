@@ -1,5 +1,5 @@
-import { useMemo, useRef, useEffect, useState } from 'react';
-import { ScrollView, Dimensions } from 'react-native';
+import { useMemo, useRef, useEffect } from 'react';
+import { ScrollView, Dimensions, SafeAreaView, View } from 'react-native';
 
 import CalendarItem from './CalendarItem.js';
 import CalendarHeader from './CalendarHeader.js';
@@ -46,28 +46,28 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
   }, [])
 
   const scrollToToday = () => {
-    scroller.current.scrollTo({ x: x * 42.45, y: 0 });
+    scroller.current.scrollTo({ x: 180 * 78.65, y: 0 });
     setSelectedDate && setSelectedDate(new Date());
   }
 
   return (
-    <>
-      <CalendarHeader 
+    <SafeAreaView> 
+      <View>
+        <CalendarHeader 
         selectedDate={selectedDate} 
         setSelectedDate={setSelectedDate}
         scrollToToday={scrollToToday}
-        scroller={scroller}
-      />
-      <ScrollView ref={scroller} horizontal={true}>
-        {dates.map((date) => {
-          return <CalendarItem 
-            date={date} 
-            selectedDate={selectedDate} 
-            setSelectedDate={setSelectedDate}
-          />
-        })}
-      </ScrollView>
-    </>
-    
+        />
+        <ScrollView ref={scroller} horizontal={true}>
+          {dates.map((date) => {
+            return <CalendarItem 
+              date={date} 
+              selectedDate={selectedDate} 
+              setSelectedDate={setSelectedDate}
+            />
+          })}
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 }

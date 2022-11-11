@@ -3,12 +3,15 @@ import { Text, Pressable, StyleSheet } from 'react-native';
 export default function CalendarItem ({ date, selectedDate, setSelectedDate }) {
   const dayNumber = date.getDate();
   const dayString = date.toString().split(' ')[0];
-  const isActive = selectedDate.getDate() === date.getDate();
-  
+  const isActive = (
+    selectedDate.getDate() === date.getDate() && 
+    selectedDate.toString().split(' ')[1] === date.toString().split(' ')[1]
+  )
+
   return (
     <Pressable
       onPress={() => setSelectedDate(date)}
-      style={[styles.date, isActive && { backgroundColor: 'white', opacity: '0.8'}]}
+      style={[styles.date, isActive && { backgroundColor: '#D9D9D9', opacity: '0.8'}]}
     >
       <Text style={[styles.dateOutput, isActive && styles.activeText]}>
         {dayNumber}

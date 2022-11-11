@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
 import HorizontalCalendar from '../components/HorizontalCalendar';
+import Habits from '../components/Habits';
 
 
 
@@ -15,6 +16,9 @@ export default function Calendar() {
                     selectedDate={selectedDate}
                     setSelectedDate={setSelectedDate}
                 />
+            </View>
+            <View>
+                <Habits/>
             </View>
         </SafeAreaView>
     );
