@@ -1,14 +1,12 @@
 module.exports  = (connection, DataTypes) => {
-    return habit = connection.define('Habit', {
-    id_habit: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
-    },
+  return habit = connection.define('Habit', {
     habit: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    deletedAt: {
+        type: DataTypes.DATE,
+        default: null
     }
-    })
+  })
 };

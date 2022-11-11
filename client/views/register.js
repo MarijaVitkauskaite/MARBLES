@@ -1,7 +1,8 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
+import apiService from '../ApiServise';
 
-export default function Login({navigation}) {
+export default function Register({navigation}) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,12 +17,12 @@ export default function Login({navigation}) {
         alert('Please enter password');
         return;
     }
+    const result = await apiService.register(userDataToSend);
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.text} source={require('../assets/Frame.png')}/>
-      <Image style={styles.marble} source={require('../assets/output-onlinejpgtools.png')}/>
+      <Image style={styles.loose} source={require('../assets/Loose.png')}/>
       <SafeAreaView style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -41,15 +42,18 @@ export default function Login({navigation}) {
       </SafeAreaView>
       <TouchableOpacity 
         style={styles.button} 
-        onPress={() => handleSubmit()}
+        onPress={() => {
+            handleSubmit();
+            // navigation.navigate('Habits');
+        }}
       >
-        <Image style={styles.login} source={require('../assets/Group.png')}/>
+      <Image style={styles.register} source={require('../assets/RegisterButton.png')}/>
       </TouchableOpacity>
       <TouchableOpacity 
         style={styles.button} 
-        onPress={() => {navigation.navigate('Register')}} 
+        onPress={() => {navigation.navigate('Login')}}
       >
-        <Image style={styles.register} source={require('../assets/Register.png')}/>
+      <Image style={styles.orLogin} source={require('../assets/OrLogin.png')}/>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -62,15 +66,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  marble: {
+  loose: {
     position: 'absolute',
-    height: 300,
-    width: 300,
-    bottom: '47.5%'
-  },
-  text: {
-    position: 'absolute',
-    bottom: '70%'
+    bottom: '52.5%',
+    width: 200,
+    height: 300
   },
   inputView: {
     bottom: '-20%',
@@ -90,11 +90,9 @@ const styles = StyleSheet.create({
   button: {
     bottom: '-20%',
   },
-  login: {
-    height: 50,
-    width: 100
-  },
-  register: {
-    top: 120
+  orLogin: {
+    bottom: -120,
+    width: 80,
+    height: 50
   }
 });

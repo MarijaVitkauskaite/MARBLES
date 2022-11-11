@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const router = require('./router');
-const connection = require('./models/index');
 const box = require('./models/index');
 
 const app = express();
@@ -11,10 +10,11 @@ app.use(express.json());
 app.use(router);
 
 box.user.hasMany(box.habit); //one to many relation 
+box.habit.hasMany(box.daily);
 
 (async() => {
     try {
-        await box.connection.sync(); // aynchronize all models
+        await box.connection.sync(); // synchronize all models
         app.listen(3000, () => {
             console.log('Hello from SERVER');
         });
