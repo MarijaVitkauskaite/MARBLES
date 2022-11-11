@@ -16,7 +16,6 @@ export default function CalendarItem ({ date, selectedDate, setSelectedDate }) {
       <Text style={[styles.dateOutput, isActive && styles.activeText]}>
         {dayNumber}
       </Text>
-
       <Text style={[styles.dayStyle, isActive && styles.activeText]}>
         {dayString}
       </Text>

@@ -16,16 +16,16 @@ function dateAddDays(date, days) {
   return result;
 }
 
-function generateHorizontalCalendarDates(daysBack, daysForward) {
+function generateHorizontalCalendarDates(datePast, dateFuture) {
   const today = new Date();
   let result = []; 
   // adding past days
-  for (let i = 0; i < daysBack; i++) {
+  for (let i = 0; i < datePast; i++) {
     result[i] = dateSubtractDays(today, i);
   }
   result.reverse();
   // adding future days
-  for (let i = 1; i < daysForward; i++) {
+  for (let i = 1; i < dateFuture; i++) {
     result.push(dateAddDays(today, i));
   }
   return result;
@@ -34,7 +34,6 @@ function generateHorizontalCalendarDates(daysBack, daysForward) {
 export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
   const datePast = 180;
   const dateFuture = 90;
-  const x = Dimensions.get('window').width;
   const scroller = useRef();
 
   const dates = useMemo(() => {
@@ -46,19 +45,19 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
   }, [])
 
   const scrollToToday = () => {
-    scroller.current.scrollTo({ x: 180 * 78.65, y: 0 });
+    scroller.current.scrollTo({ x: datePast * 78.65, y: 0 });
     setSelectedDate && setSelectedDate(new Date());
   }
 
   return (
     <SafeAreaView> 
-      <View>
+      <View style={{height: 200}}>
         <CalendarHeader 
         selectedDate={selectedDate} 
         setSelectedDate={setSelectedDate}
         scrollToToday={scrollToToday}
         />
-        <ScrollView ref={scroller} horizontal={true}>
+        <ScrollView ref={scroller} horizontal={true} showsHorizontalScrollIndicator={false}>
           {dates.map((date) => {
             return <CalendarItem 
               date={date} 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
 import HorizontalCalendar from '../components/HorizontalCalendar';
-import Habits from '../components/Habits';
+import Habit from '../components/Habit';
 
 
 
@@ -18,7 +18,7 @@ export default function Calendar() {
                 />
             </View>
             <View>
-                <Habits/>
+                <Habit/>
             </View>
         </SafeAreaView>
     );
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#7197AC',
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'top',
     },
 });

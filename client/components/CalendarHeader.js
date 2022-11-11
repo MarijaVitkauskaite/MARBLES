@@ -9,7 +9,7 @@ export default function CalendarHeader({date, setSelectedDate, scrollToToday}) {
         <Pressable
           onPress={() => setSelectedDate(date)}
           >
-          <Text>ADD</Text>
+          <Image source={require('../assets/Add.png')} style={{top: 7}}/>
         </Pressable>
      </SafeAreaView>
       
