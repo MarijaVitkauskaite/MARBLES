@@ -13,12 +13,12 @@ box.user.hasMany(box.habit); //one to many relation
 box.habit.hasMany(box.daily);
 
 (async() => {
-    try {
-        await box.connection.sync(); // synchronize all models
-        app.listen(3000, () => {
-            console.log('Hello from SERVER');
-        });
-    } catch (error) {
-        console.log('error in SERVER: ', error);
-    }
+  try {
+    await box.connection.sync(); // synchronize all models
+    app.listen(3000, () => {
+      console.log('Hello from SERVER');
+    });
+  } catch (error) {
+    console.log('error in SERVER: ', error);
+  }
 })();

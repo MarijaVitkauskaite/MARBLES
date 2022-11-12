@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
 const connection = new Sequelize('marbles', 'marijavitkauskaite', '', {
-    host: 'localhost',
-    dialect: 'postgres'
+  host: 'localhost',
+  dialect: 'postgres'
 });
 
 const box = {};

@@ -68,5 +68,5 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
         </ScrollView>
       </View>
     </SafeAreaView>
-  );
+  )
 }
