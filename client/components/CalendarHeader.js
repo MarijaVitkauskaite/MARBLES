@@ -1,4 +1,4 @@
-import { Text, Pressable, TouchableOpacity, SafeAreaView, Image } from 'react-native';
+import { Pressable, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 
 export default function CalendarHeader({date, setSelectedDate, scrollToToday}) {
   return (

@@ -39,11 +39,7 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
   const dates = useMemo(() => {
     return generateHorizontalCalendarDates(datePast, dateFuture);
   }, []);
-
-  useEffect(() => {
-    scrollToToday();
-  }, [])
-
+  
   const scrollToToday = () => {
     scroller.current.scrollTo({ x: datePast * 78.65, y: 0 });
     setSelectedDate && setSelectedDate(new Date());
@@ -57,7 +53,7 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
         setSelectedDate={setSelectedDate}
         scrollToToday={scrollToToday}
         />
-        <ScrollView ref={scroller} horizontal={true} showsHorizontalScrollIndicator={false}>
+        <ScrollView ref={scroller} onContentSizeChange={(contentwidth)=>scrollToToday()} horizontal={true} showsHorizontalScrollIndicator={false}>
           {dates.map((date) => {
             return <CalendarItem 
               date={date} 

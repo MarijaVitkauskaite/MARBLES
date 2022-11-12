@@ -10,7 +10,7 @@ apiService.register = (user) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
   })
-    .then((res) => res.json())
+    .then((res) => res.jsoxn())
     .catch((err) => console.log(err));
 };
 
