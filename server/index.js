@@ -9,9 +9,6 @@ app.use(cors());
 app.use(express.json()); 
 app.use(router);
 
-box.user.hasMany(box.habit); //one to many relation 
-box.habit.hasMany(box.daily);
-
 (async() => {
   try {
     await box.connection.sync(); // synchronize all models

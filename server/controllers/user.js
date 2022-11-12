@@ -1,6 +1,6 @@
 const box = require ('../models/index');
 
-const postUsers = async(req, res) => {
+const registerUser = async(req, res) => {
     const {email, password} = req.body;
     try {
         const emailExists = await box.user.findOne({ where: { email: email } });
@@ -22,7 +22,7 @@ const loginUser = async(req, res) => {
   const {email, password} = req.body;
   try {
     const emailExists = await box.user.findOne({ where: { email: email } });
-    const isPasswordRight = await box.user.findOne({where: {password: password}});
+    const isPasswordRight = emailExists.password === password    
     if (emailExists && isPasswordRight) {
       res.status(201);
       res.json('success');
@@ -35,4 +35,4 @@ const loginUser = async(req, res) => {
     console.log('error in loginUsers: ', error);
   }
 }
-module.exports = { postUsers, loginUser };
+module.exports = { registerUser, loginUser };

@@ -33,11 +33,12 @@ export default function Login({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.text} source={require('../assets/Frame.png')}/>
-      <Image style={styles.marble} source={require('../assets/output-onlinejpgtools.png')}/>
+      <Image style={styles.marble} source={require('../assets/Marbles.png')}/>
       <View style={styles.inputView}>
         <TextInput
           ref={clearEmail}
           style={styles.TextInput}
+          autoCapitalize='none'
           placeholder="EMAIL"
           placeholderTextColor="#353535"
           onChangeText={(email) => setEmail(email)}
@@ -47,6 +48,7 @@ export default function Login({navigation}) {
         <TextInput
           ref={clearPassword}
           style={styles.TextInput}
+          autoCapitalize='none'
           placeholder="PASSWORD"
           placeholderTextColor="#353535"
           secureTextEntry={true}

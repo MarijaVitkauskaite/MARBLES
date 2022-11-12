@@ -5,6 +5,7 @@ import Login from './views/login';
 import Calendar from './views/calendar';
 import Habits from './views/habits';
 import Register from './views/register';
+import AddHabit from './components/AddHabit';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ function MyStack() {
       <Stack.Screen name="Login" component={Login}/>
       <Stack.Screen name="Register" component={Register}/>
       <Stack.Screen name="Habits" component={Habits}/>
+      <Stack.Screen name="AddHabit" component={AddHabit}/>
       <Stack.Screen name="Calendar" component={Calendar}/>
     </Stack.Navigator>
   );

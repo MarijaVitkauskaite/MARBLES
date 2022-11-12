@@ -5,7 +5,7 @@ import Habit from '../components/Habit';
 
 
 
-export default function Calendar() {
+export default function Calendar({navigation}) {
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -15,6 +15,7 @@ export default function Calendar() {
         <HorizontalCalendar
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
+          navigation={navigation}
         />
       </View>
       <View>

@@ -11,6 +11,8 @@ box.user = require('./user')(connection, Sequelize.DataTypes);
 box.habit = require('./habit')(connection, Sequelize.DataTypes);
 box.daily = require('./daily')(connection, Sequelize.DataTypes);
 
+box.user.hasMany(box.habit); //one to many relation 
+box.habit.hasMany(box.daily);
 
 box.connection = connection;
 module.exports = box;
