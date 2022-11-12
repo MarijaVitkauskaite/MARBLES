@@ -26,16 +26,17 @@ apiService.login = (user) => {
     .catch((err) => console.log(err));
 };
 
-// apiService.habits = (habits) => {
-//   return fetch(`${BASE_URL}/habits`, {
-//     method: 'GET',
-//     credentials: 'include',
-//     mode: 'cors',
-//     headers: { 'Content-Type': 'application/json' },
-//   })
-//     .then((res) => res.json())
-//     .catch((err) => console.log(err));
-// };
+apiService.habits = (habits) => {
+  return fetch(`${BASE_URL}/habits`, {
+    method: 'POST',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(habits),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
 
 // apiService.logout = () => {
 //   return fetch(`${BASE_URL}/logout`, {

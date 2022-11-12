@@ -9,7 +9,7 @@ router.post('/register', user.registerUser)
 router.post('/login', user.loginUser)
 
 router.post('/habits', habits.saveHabits)
-
-//routes for haits
+router.get('/habits', habits.showHabits)
+router.delete('/habits/:id', habits.deleteHabits);
 
 module.exports = router;

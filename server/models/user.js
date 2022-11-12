@@ -1,8 +1,8 @@
 module.exports  = (connection, DataTypes) => {
   return user = connection.define('User', {
-  uuid: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+  id: {
+    type: DataTypes.INTEGER,
+    defaultValue: 1,
     primaryKey: true,
   },
   email: {

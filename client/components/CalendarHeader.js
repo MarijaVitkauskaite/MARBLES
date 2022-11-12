@@ -10,6 +10,5 @@ export default function CalendarHeader({date, setSelectedDate, scrollToToday, ad
         <Image source={require('../assets/Add.png')} style={{top: 7}}/>
       </TouchableOpacity>
      </SafeAreaView>
-      
     )
 }
