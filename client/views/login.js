@@ -1,5 +1,6 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
+import apiService from '../ApiServise';
 
 export default function Login({navigation}) {
 
@@ -19,7 +20,7 @@ export default function Login({navigation}) {
         alert('Please enter password');
         return;
     }
-    const result = await apiService.register(userDataToSend);
+    const result = await apiService.login(userDataToSend);
     if (result === 'Please register') {
         alert('Please register');
         clearEmail.current.clear();

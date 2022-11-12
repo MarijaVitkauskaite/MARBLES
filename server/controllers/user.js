@@ -22,12 +22,13 @@ const loginUser = async(req, res) => {
     const {email, password} = req.body;
     try {
         const emailExists = await box.user.findOne({ where: { email: email } });
-        if (!emailExists) {
-            res.status(200).json("Please register")
+        const isPasswordRight = await box.user.findOne({where: {password: password}});
+        if (emailExists && isPasswordRight) {
+            res.status(201);
+            res.json('success');
         }
         else {
-            res.status(201);
-            res.json();
+            res.status(200).json("Please register")
         }
     } catch (error) {
         res.status(500);
