@@ -4,13 +4,14 @@ const postUsers = async(req, res) => {
     const {email, password} = req.body;
     try {
         const emailExists = await box.user.findOne({ where: { email: email } });
-        if (emailExists ) {res.json("Email already registered")}
+        if (emailExists ) {
+            res.status(200).json("Email already registered")
+        }
         else {
             const variable = await box.user.create({email: email, password: password});
-            console.log(variable);
+            res.status(201);
+            res.json('success');
         }
-        res.status(201);
-        res.send();
     } catch (error) {
         res.status(500);
         console.log('error in postUsers: ', error);
@@ -20,10 +21,17 @@ const postUsers = async(req, res) => {
 const loginUser = async(req, res) => {
     const {email, password} = req.body;
     try {
-        // extract the user data from the table user based on the email, 
-        // check if it's the same, if not -> could not log in
+        const emailExists = await box.user.findOne({ where: { email: email } });
+        if (!emailExists) {
+            res.status(200).json("Please register")
+        }
+        else {
+            res.status(201);
+            res.json();
+        }
     } catch (error) {
-        
+        res.status(500);
+        console.log('error in loginUsers: ', error);
     }
 }
 module.exports = { postUsers, loginUser };

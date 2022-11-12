@@ -1,10 +1,13 @@
-import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
+import { useState, useRef } from 'react';
 
 export default function Login({navigation}) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const clearEmail = useRef();
+  const clearPassword = useRef();
 
   const handleSubmit = async () => {
     const userDataToSend = {email, password};
@@ -16,29 +19,39 @@ export default function Login({navigation}) {
         alert('Please enter password');
         return;
     }
+    const result = await apiService.register(userDataToSend);
+    if (result === 'Please register') {
+        alert('Please register');
+        clearEmail.current.clear();
+        clearPassword.current.clear();
+    } else {
+        navigation.navigate('Habits');
+    }
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.text} source={require('../assets/Frame.png')}/>
       <Image style={styles.marble} source={require('../assets/output-onlinejpgtools.png')}/>
-      <SafeAreaView style={styles.inputView}>
+      <View style={styles.inputView}>
         <TextInput
+          ref={clearEmail}
           style={styles.TextInput}
           placeholder="EMAIL"
           placeholderTextColor="#353535"
           onChangeText={(email) => setEmail(email)}
         />
-      </SafeAreaView>
-      <SafeAreaView style={styles.inputView}>
+      </View>
+      <View style={styles.inputView}>
         <TextInput
+          ref={clearPassword}
           style={styles.TextInput}
           placeholder="PASSWORD"
           placeholderTextColor="#353535"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
-      </SafeAreaView>
+      </View>
       <TouchableOpacity 
         style={styles.button} 
         onPress={() => handleSubmit()}
@@ -47,7 +60,7 @@ export default function Login({navigation}) {
       </TouchableOpacity>
       <TouchableOpacity 
         style={styles.button} 
-        onPress={() => {navigation.navigate('Register')}} 
+        onPress={() => {navigation.replace('Register')}} 
       >
         <Image style={styles.register} source={require('../assets/Register.png')}/>
       </TouchableOpacity>
@@ -83,9 +96,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   TextInput: {
-    height: 50,
     flex: 1,
-    padding: 10,
+    alignItems: 'stretch'
   },
   button: {
     bottom: '-20%',

@@ -1,5 +1,5 @@
 import { useMemo, useRef, useEffect } from 'react';
-import { ScrollView, Dimensions, SafeAreaView, View } from 'react-native';
+import { ScrollView, SafeAreaView, View } from 'react-native';
 
 import CalendarItem from './CalendarItem.js';
 import CalendarHeader from './CalendarHeader.js';
