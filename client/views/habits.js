@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
 import HorizontalCalendar from '../components/HorizontalCalendar';
 import HabitList from '../components/HabitList';
@@ -10,6 +10,16 @@ export default function Habits() {
   const navigation = useNavigation();
   const [selectedDate, setSelectedDate] = useState(new Date());
 
+  const [habits, setHabits] = useState([]);
+
+  useEffect(() => {
+    const getHabits = async() => {
+      const updatedHabits = await apiService.getHabits();
+      setHabits(updatedHabits)
+    }
+    getHabits();
+  }, [habits])
+
   return (
     <SafeAreaView style={styles.container}>
         <HorizontalCalendar
@@ -17,7 +27,9 @@ export default function Habits() {
           setSelectedDate={setSelectedDate}
           navigation={navigation}
         />
-        <HabitList />
+        <HabitList 
+          habits={habits}
+        />
         <BottomNav
           navigation={navigation}
         />

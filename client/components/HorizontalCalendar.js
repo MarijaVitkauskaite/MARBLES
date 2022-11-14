@@ -31,7 +31,7 @@ function generateHorizontalCalendarDates(datePast, dateFuture) {
   return result;
 }
 
-export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
+export default function HorizontalCalendar({ selectedDate, setSelectedDate, navigation }) {
   const datePast = 180;
   const dateFuture = 90;
   const scroller = useRef();
@@ -45,13 +45,18 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
     setSelectedDate && setSelectedDate(new Date());
   }
 
+  const addHabit = () => {
+    navigation.replace('AddHabit');
+  }
+
   return (
     <SafeAreaView> 
-      <View style={{height: 200}}>
+      <View style={{height: 130}}>
         <CalendarHeader 
         selectedDate={selectedDate} 
         setSelectedDate={setSelectedDate}
         scrollToToday={scrollToToday}
+        addHabit={addHabit}
         />
         <ScrollView ref={scroller} onContentSizeChange={()=>scrollToToday()} horizontal={true} showsHorizontalScrollIndicator={false}>
           {dates.map((date) => {

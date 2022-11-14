@@ -49,16 +49,19 @@ apiService.getHabits = () => {
     .catch((err) => console.log(err));
 };
 
-apiService.deleteHabits = () => {
+apiService.deleteHabits = (habits) => {
   return fetch(`${BASE_URL}/habits/:id`, {
-    method: 'DELETE',
+    method: 'PUT',
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(habits),
   })
+    .then((res) => res.json())
+    .catch((err) => console.log(err))
 };
 
-apiService.updateHabits = () => {
+apiService.updateHabits = (habits) => {
   return fetch(`${BASE_URL}/habits/:id`, {
     method: 'PUT',
     credentials: 'include',

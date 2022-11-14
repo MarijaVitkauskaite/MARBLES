@@ -2,11 +2,13 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import {CalendarList} from 'react-native-calendars';
 import { useState } from 'react';
 import BottomNav from '../components/BottomNav';
+import { useNavigation } from '@react-navigation/native';
 
 
-export default function CalendarScroll({navigation}) {
-
+export default function CalendarScroll() {
+  const navigation = useNavigation();
   const [selectedDay, setSelectedDay] = useState('')
+
   return (
     <SafeAreaView style={styles.container}>
       <CalendarList 
@@ -16,7 +18,8 @@ export default function CalendarScroll({navigation}) {
       scrollEnabled={true}
       markedDates={{[selectedDay]: { selected: true }}}
       onDayPress={(day) => {
-        setSelectedDay(day.dateString)
+        setSelectedDay(day.dateString);
+        navigation.replace('AddHabit');
       }}
       theme={{
         'stylesheet.calendar.main':{

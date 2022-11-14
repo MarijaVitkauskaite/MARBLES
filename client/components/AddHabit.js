@@ -13,9 +13,12 @@ export default function AddHabit({navigation}){
     if (!habit) {
         alert('Please enter a habit');
     } else {
-      const newHabit = await apiService.sendHabits(habitToSend);
-      navigation.replace('Habits');
-      clearhabit.current.clear();
+        const newHabit = await apiService.sendHabits(habitToSend);
+        if (newHabit === 'Too many habits') {
+          alert('Too many habits');
+          navigation.replace('Habits');
+          clearhabit.current.clear();
+        }
     }
   }
   

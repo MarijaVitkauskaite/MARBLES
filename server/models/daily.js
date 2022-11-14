@@ -1,7 +1,7 @@
 module.exports  = (connection, DataTypes) => {
   return daily = connection.define('Daily', {
     date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false
     },
     completed: {

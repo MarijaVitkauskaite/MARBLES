@@ -11,7 +11,7 @@ export default function CalendarItem ({ date, selectedDate, setSelectedDate }) {
   return (
     <Pressable
       onPress={() => setSelectedDate(date)}
-      style={[styles.date, isActive && { backgroundColor: '#D9D9D9', opacity: '0.8'}]}
+      style={[styles.date, isActive && { backgroundColor: '#B0C2CA'}]}
     >
       <Text style={[styles.dateOutput, isActive && styles.activeText]}>
         {dayNumber}
