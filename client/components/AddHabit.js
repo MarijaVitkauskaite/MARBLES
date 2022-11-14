@@ -1,6 +1,6 @@
 import { SafeAreaView, Image, StyleSheet, View, TextInput, TouchableOpacity} from 'react-native';
 import { useRef, useState } from 'react';
-import apiService from '../ApiServise';
+import apiService from '../ApiService';
 
 export default function AddHabit({navigation}){
 

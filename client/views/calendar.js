@@ -16,7 +16,7 @@ export default function CalendarScroll({navigation}) {
       scrollEnabled={true}
       markedDates={{[selectedDay]: { selected: true }}}
       onDayPress={(day) => {
-        {setSelectedDay(day.dateString)}
+        setSelectedDay(day.dateString)
       }}
       theme={{
         'stylesheet.calendar.main':{

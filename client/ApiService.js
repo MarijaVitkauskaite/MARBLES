@@ -49,15 +49,13 @@ apiService.getHabits = () => {
     .catch((err) => console.log(err));
 };
 
-// apiService.logout = () => {
-//   return fetch(`${BASE_URL}/logout`, {
-//     method: 'POST',
-//     credentials: 'include',
-//     mode: 'cors',
-//     headers: { 'Content-Type': 'application/json' },
-//   })
-//     .then((res) => res.json())
-//     .catch((err) => console.log(err));
-// };
+apiService.deleteHabits = () => {
+  return fetch(`${BASE_URL}/habits/:id`, {
+    method: 'DELETE',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+  })
+};
 
 export default apiService;

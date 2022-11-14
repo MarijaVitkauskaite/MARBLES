@@ -1,6 +1,6 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
-import apiService from '../ApiServise';
+import apiService from '../ApiService';
 
 export default function Login({navigation}) {
 
