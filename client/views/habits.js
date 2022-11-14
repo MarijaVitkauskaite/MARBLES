@@ -18,11 +18,11 @@ export default function Calendar({navigation}) {
           navigation={navigation}
         />
       </View>
-      <View style={styles.habit}>
+      <View>
         <HabitList />
       </View>
-      <View style={styles.bottomnav}>
-        <BottomNav 
+      <View >
+        <BottomNav
         option={option}
         setOption={setOption}
         navigation={navigation}
@@ -39,16 +39,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'top',
-  },
-  habits: {
-
-  },
-  bottomnav: {
-    top: '60%',
-    width: '100%',
-    flex: 0.2,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'bottom',
   }
 });

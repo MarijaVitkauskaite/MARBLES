@@ -1,14 +1,41 @@
-import { TouchableOpacity, SafeAreaView, Text, Image } from 'react-native';
+import { TouchableOpacity, View, Image, StyleSheet } from 'react-native';
 
 export default function BottomNav({navigation}){
   return (
-    <SafeAreaView style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-      <TouchableOpacity onPress={navigation.replace('Calendar')}>
-        <Image source={require('../assets/Today.png')}/>
+    <View style={styles.navbar}>
+      <TouchableOpacity onPress={() => navigation.replace('Calendar')}>
+        <Image style={styles.calendar} source={require('../assets/Calendar.png')}/>
       </TouchableOpacity>
-      <TouchableOpacity onPress={navigation.replace('Login')}>
-        <Image source={require('../assets/Add.png')}/>
+      <TouchableOpacity onPress={() => navigation.replace('Habits')}>
+        <Image style={styles.update} source={require('../assets/Update.png')}/>
       </TouchableOpacity>
-    </SafeAreaView>
+      <TouchableOpacity onPress={() => navigation.replace('Login')}>
+        <Image style={styles.logout} source={require('../assets/LogOut.png')}/>
+      </TouchableOpacity>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  navbar: {
+    top: -30,
+    width: '100%',
+    height: '10%',
+    backgroundColor: '#7197AC',
+    flexDirection: 'row', 
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  calendar: {
+    height: 35,
+    width: 35
+  },
+  update: {
+    height: 35,
+    width: 35
+  },
+  logout: {
+    height: 35,
+    width: 30
+  }
+})

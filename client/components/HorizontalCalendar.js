@@ -62,6 +62,7 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate, navi
           {dates.map((date) => {
             return <CalendarItem 
               date={date} 
+              key={date}
               selectedDate={selectedDate} 
               setSelectedDate={setSelectedDate}
             />

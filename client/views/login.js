@@ -26,7 +26,7 @@ export default function Login({navigation}) {
         clearEmail.current.clear();
         clearPassword.current.clear();
     } else {
-        navigation.navigate('Habits');
+        navigation.replace('Habits');
     }
   }
 

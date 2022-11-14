@@ -1,5 +1,7 @@
 const box = require ('../models/index');
 
+const userId = 1;
+
 const registerUser = async(req, res) => {
     const {email, password} = req.body;
     try {
@@ -8,7 +10,7 @@ const registerUser = async(req, res) => {
             res.status(200).json("Email already registered")
         }
         else {
-            const variable = await box.user.create({email: email, password: password});
+            await box.user.create({email: email, password: password});
             res.status(201);
             res.json('success');
         }

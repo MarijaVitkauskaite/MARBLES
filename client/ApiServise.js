@@ -1,4 +1,4 @@
-const BASE_URL = 'http://10.10.22.241:3000';
+const BASE_URL = 'http://192.168.0.30:3000';
 
 const apiService = {};
 
@@ -10,7 +10,7 @@ apiService.register = (user) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
   })
-    .then((res) => res.jsoxn())
+    .then((res) => res.json())
     .catch((err) => console.log(err));
 };
 
@@ -33,6 +33,17 @@ apiService.habits = (habits) => {
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(habits),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
+apiService.habits = () => {
+  return fetch(`${BASE_URL}/habits`, {
+    method: 'GET',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));

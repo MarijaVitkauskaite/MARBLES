@@ -1,7 +1,8 @@
 import { SafeAreaView, Image, StyleSheet, View, TextInput, TouchableOpacity} from 'react-native';
 import { useRef, useState } from 'react';
+import apiService from '../ApiServise';
 
-export default function AddHabit({setSelectedDate, navigation}){
+export default function AddHabit({navigation}){
 
   const [habit, setHabit] = useState('');
 
@@ -10,15 +11,17 @@ export default function AddHabit({setSelectedDate, navigation}){
   const handleSubmit = async () => {
     const habitToSend = {habit};
     if (!habit) {
-        alert('Please enter email address');
+        alert('Please enter a habit');
         return;
+    } else {
+      await apiService.habits(habitToSend);
+      clearhabit.current.clear();
     }
-    const result = await apiService.habit(habitToSend);
-    clearhabit.current.clear();
   }
-
+  
   return(
     <SafeAreaView style={styles.container}>
+      <View style={styles.form}>
       <Image style={styles.addhabit} source={require('../assets/NewHabit.png')}/>
       <View style={styles.inputView}>
         <TextInput
@@ -28,14 +31,18 @@ export default function AddHabit({setSelectedDate, navigation}){
           placeholder="HABIT"
           placeholderTextColor="#353535"
           onChangeText={(habit) => setHabit(habit)}
-        />
+          />
       </View>
       <TouchableOpacity 
         style={styles.button} 
-        onPress={() => {navigation.replace('Habits')}} 
-      >
+        onPress={() => {
+          handleSubmit()
+          navigation.replace('Habits')
+        }} 
+        >
         <Image style={styles.add} source={require('../assets/AddHabit.png')}/>
       </TouchableOpacity>
+      </View>
     </SafeAreaView>
   )
 }
@@ -44,14 +51,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#7197AC',
+  },
+  form: {
+    width: 350,
+    height: 300,
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    top: '35%',
+    left: '5%'
   },
   addhabit: {
     position: 'absolute',
-    height: 250,
-    width: 300,
-    bottom: '55%',
+    height: 200,
+    width: 250,
+    bottom: '60%',
     right: '0%'
   },
   inputView: {
@@ -72,10 +87,7 @@ const styles = StyleSheet.create({
     bottom: '-10%',
   },
   add: {
-    height: 50,
-    width: 60
-  },
-  // cancel: {
-  //   top: 120
-  // }
+    height: 40,
+    width: 50
+  }
 })
