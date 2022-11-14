@@ -6,12 +6,13 @@ import BottomNav from '../components/BottomNav';
 
 export default function CalendarScroll({navigation}) {
 
-  const [selectedDay, setSelectedDay] = useState(new Date().toISOString().slice(0, 10))
+  const [selectedDay, setSelectedDay] = useState('')
   return (
     <SafeAreaView style={styles.container}>
       <CalendarList 
       pastScrollRange={6}
       futureScrollRange={3}
+      firstDay={1}
       scrollEnabled={true}
       markedDates={{[selectedDay]: { selected: true }}}
       onDayPress={(day) => {
@@ -44,15 +45,20 @@ export default function CalendarScroll({navigation}) {
             color: '#353535'
           },
       },
-      'stylesheet.calendar.header':{
-        monthText: {
-          fontSize: 20,
-          color: '#353535',
-          margin: 10,
-          fontWeight: 'bold',
+        'stylesheet.calendar.header':{
+          monthText: {
+            fontSize: 20,
+            color: '#353535',
+            margin: 10,
+            fontWeight: 'bold',
+            textTransform: 'uppercase'
+          },
+          dayHeader: {
+            textTransform: 'lowercase',
+            color: '#353535'
+          }
         }
-      }
-    }}
+      }}
       />
       <BottomNav navigation={navigation}/>
     </SafeAreaView>

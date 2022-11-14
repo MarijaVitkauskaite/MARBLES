@@ -18,13 +18,15 @@ export default function BottomNav({navigation}){
 
 const styles = StyleSheet.create({
   navbar: {
-    top: -30,
+    top: 0,
+    left: 0,
     width: '100%',
     height: '10%',
     backgroundColor: '#7197AC',
     flexDirection: 'row', 
     justifyContent: 'space-around',
     alignItems: 'center',
+    display: 'absolute'
   },
   calendar: {
     height: 35,

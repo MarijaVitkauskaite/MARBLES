@@ -11,23 +11,17 @@ export default function Calendar({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
         <HorizontalCalendar
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
           navigation={navigation}
         />
-      </View>
-      <View>
         <HabitList />
-      </View>
-      <View >
         <BottomNav
-        option={option}
-        setOption={setOption}
-        navigation={navigation}
+          option={option}
+          setOption={setOption}
+          navigation={navigation}
         />
-      </View>
     </SafeAreaView>
     );
 };

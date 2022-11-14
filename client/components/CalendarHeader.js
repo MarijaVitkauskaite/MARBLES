@@ -1,6 +1,6 @@
 import { TouchableOpacity, SafeAreaView, Image } from 'react-native';
 
-export default function CalendarHeader({date, setSelectedDate, scrollToToday, addHabit}) {
+export default function CalendarHeader({scrollToToday, addHabit}) {
   return (
     <SafeAreaView style={{flexDirection: 'row', justifyContent: 'space-around'}}>
       <TouchableOpacity onPress={scrollToToday}>

@@ -5,7 +5,9 @@ export default function Habits() {
     <View style={styles.container}>
       <View style={styles.habit}>
         <Image style={styles.tick} source={require('../assets/Tick.png')}/>
-        <Text style={styles.text}>SHOWER</Text>
+        <Text style={styles.text}>
+          theeth
+        </Text>
       </View>
       {/* <View style={styles.habit}></View>
       <View style={styles.habit}></View>
@@ -18,7 +20,7 @@ export default function Habits() {
 const styles = StyleSheet.create({
   container: {
     top: '-5%',
-    height: 550,
+    height: 510,
     width: 350,
     flexDirection: 'column',
     alignItems: 'center',
@@ -40,6 +42,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     color: '#353535',
+    opacity: 0.8,
     fontWeight: 'medium',
     top: 15,
     left: 30

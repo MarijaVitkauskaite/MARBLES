@@ -1,15 +1,15 @@
 const box = require ('../models/index');
 
+const USER_ID = 1;
+
 const saveHabits = async(req, res) => {
   const {habit} = req.body;
-  const habitWithUser = {
-    ...habit,
-    id: 1
-  }
+  const habitWithUser = { habit, UserId: USER_ID };
+  console.log(habitWithUser);
   try {
-    const variable = await box.habit.create({habit: habitWithUser});
+    const createHabit = await box.habit.create(habitWithUser);
     res.status(201);
-    res.json({habit: habit});
+    res.json(createHabit);
   } catch (error) {
     res.status(500);
     console.log('error in saveHabits: ', error);
@@ -18,8 +18,8 @@ const saveHabits = async(req, res) => {
 
 const showHabits = async(req, res) => {
   try {
-    const variable = await box.habit.findOne({where: {id: habitWithUser.id}});
-    res.send(variable);  
+    const findHabits = await box.habit.findAll({where: {UserId: USER_ID}});
+    res.send(findHabits);  
   } catch (error) {
     res.status(500);
     console.log('error in showHabits: ', error);
@@ -29,7 +29,7 @@ const showHabits = async(req, res) => {
 const deleteHabits = async(req, res) => {
   try {
     const {id} = req.params;
-    const variable = await box.habit.destroy({where: {id: habitWithUser.id}});
+    await box.habit.destroy({where: {id: id}});
     res.body('Removed');
 } catch (error) {
     res.status(500);

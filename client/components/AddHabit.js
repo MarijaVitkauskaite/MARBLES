@@ -14,7 +14,7 @@ export default function AddHabit({navigation}){
         alert('Please enter a habit');
         return;
     } else {
-      await apiService.habits(habitToSend);
+      const newHabit = await apiService.sendHabits(habitToSend);
       clearhabit.current.clear();
     }
   }

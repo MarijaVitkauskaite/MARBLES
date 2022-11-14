@@ -1,4 +1,4 @@
-const BASE_URL = 'http://192.168.0.30:3000';
+const BASE_URL = 'http://10.10.22.151:3000';
 
 const apiService = {};
 
@@ -26,7 +26,7 @@ apiService.login = (user) => {
     .catch((err) => console.log(err));
 };
 
-apiService.habits = (habits) => {
+apiService.sendHabits = (habits) => {
   return fetch(`${BASE_URL}/habits`, {
     method: 'POST',
     credentials: 'include',
@@ -38,7 +38,7 @@ apiService.habits = (habits) => {
     .catch((err) => console.log(err));
 };
 
-apiService.habits = () => {
+apiService.getHabits = () => {
   return fetch(`${BASE_URL}/habits`, {
     method: 'GET',
     credentials: 'include',
