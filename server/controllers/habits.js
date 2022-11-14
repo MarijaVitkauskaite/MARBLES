@@ -31,10 +31,22 @@ const deleteHabits = async(req, res) => {
     const {id} = req.params;
     await box.habit.destroy({where: {id: id}});
     res.body('Removed');
-} catch (error) {
+  } catch (error) {
     res.status(500);
     console.log('error in deleteHabits: ', error);
-}
+  }
 }
 
-module.exports = { saveHabits, showHabits, deleteHabits }
+const updateHabits = async(req, res) => {
+  try {
+    const {id} = req.params;
+    await box.habit.update({where: {id: id}});
+    // how to check that it only updates that date not the whole entire habit???
+    res.body('Updated');
+  } catch (error) {
+    res.status(500);
+    console.log('error in updateHabits: ', error);
+  }
+}
+
+module.exports = { saveHabits, showHabits, deleteHabits, updateHabits }

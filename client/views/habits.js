@@ -3,11 +3,12 @@ import { StyleSheet, SafeAreaView, View } from 'react-native';
 import HorizontalCalendar from '../components/HorizontalCalendar';
 import HabitList from '../components/HabitList';
 import BottomNav from '../components/BottomNav';
+import apiService from '../ApiService';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Calendar({navigation}) {
-
+export default function Habits() {
+  const navigation = useNavigation();
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [option, setOption] = useState('');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -18,8 +19,6 @@ export default function Calendar({navigation}) {
         />
         <HabitList />
         <BottomNav
-          option={option}
-          setOption={setOption}
           navigation={navigation}
         />
     </SafeAreaView>

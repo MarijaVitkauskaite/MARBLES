@@ -1,4 +1,4 @@
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useRef } from 'react';
 import { ScrollView, SafeAreaView, View } from 'react-native';
 
 import CalendarItem from './CalendarItem.js';
@@ -31,7 +31,7 @@ function generateHorizontalCalendarDates(datePast, dateFuture) {
   return result;
 }
 
-export default function HorizontalCalendar({ selectedDate, setSelectedDate, navigation }) {
+export default function HorizontalCalendar({ selectedDate, setSelectedDate }) {
   const datePast = 180;
   const dateFuture = 90;
   const scroller = useRef();
@@ -45,10 +45,6 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate, navi
     setSelectedDate && setSelectedDate(new Date());
   }
 
-  const addHabit = () => {
-    navigation.navigate('AddHabit');
-  }
-
   return (
     <SafeAreaView> 
       <View style={{height: 200}}>
@@ -56,7 +52,6 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate, navi
         selectedDate={selectedDate} 
         setSelectedDate={setSelectedDate}
         scrollToToday={scrollToToday}
-        addHabit={addHabit}
         />
         <ScrollView ref={scroller} onContentSizeChange={()=>scrollToToday()} horizontal={true} showsHorizontalScrollIndicator={false}>
           {dates.map((date) => {

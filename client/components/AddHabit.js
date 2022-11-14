@@ -12,9 +12,9 @@ export default function AddHabit({navigation}){
     const habitToSend = {habit};
     if (!habit) {
         alert('Please enter a habit');
-        return;
     } else {
       const newHabit = await apiService.sendHabits(habitToSend);
+      navigation.replace('Habits');
       clearhabit.current.clear();
     }
   }
@@ -37,7 +37,6 @@ export default function AddHabit({navigation}){
         style={styles.button} 
         onPress={() => {
           handleSubmit()
-          navigation.replace('Habits')
         }} 
         >
         <Image style={styles.add} source={require('../assets/AddHabit.png')}/>

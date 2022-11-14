@@ -58,4 +58,16 @@ apiService.deleteHabits = () => {
   })
 };
 
+apiService.updateHabits = () => {
+  return fetch(`${BASE_URL}/habits/:id`, {
+    method: 'PUT',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(habits),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err))
+};
+
 export default apiService;
