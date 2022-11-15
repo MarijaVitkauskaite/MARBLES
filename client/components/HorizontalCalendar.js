@@ -32,7 +32,7 @@ function generateHorizontalCalendarDates(datePast, dateFuture) {
   return result;
 }
 
-export default function HorizontalCalendar({ selectedDate, setSelectedDate, navigation }) {
+export default function HorizontalCalendar({ selectedDate, setSelectedDate, navigation, today }) {
   const datePast = 180;
   const dateFuture = 90;
   const scroller = useRef();
@@ -43,7 +43,7 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate, navi
 
   const scrollToToday = () => {
     scroller.current.scrollTo({ x: datePast * 78.65, y: 0 });
-    setSelectedDate && setSelectedDate(new Date());
+    setSelectedDate && setSelectedDate(today);
   }
 
   const addHabit = () => {

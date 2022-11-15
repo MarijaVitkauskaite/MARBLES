@@ -15,12 +15,12 @@ export default function Habits() {
 
   const [habits, setHabits] = useState([]);
 
+  const getHabits = async() => {
+    const updatedHabits = await apiService.getHabits(selectedDate);
+    setHabits(updatedHabits)
+  }
+
   useEffect(() => {
-    const getHabits = async() => {
-      const updatedHabits = await apiService.getHabits(selectedDate);
-      console.log(selectedDate);
-      setHabits(updatedHabits)
-    }
     getHabits();
   }, [selectedDate])
 
@@ -30,11 +30,13 @@ export default function Habits() {
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
           navigation={navigation}
+          today={today}
         />
         <HabitList 
           habits={habits}
           setHabits={setHabits}
           selectedDate={selectedDate}
+          getHabits={getHabits}
         />
         <BottomNav
           navigation={navigation}
