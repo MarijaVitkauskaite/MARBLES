@@ -8,13 +8,17 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Habits() {
   const navigation = useNavigation();
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const today = new Date();
+  today.setHours(23, 59, 59, 999);
+
+  const [selectedDate, setSelectedDate] = useState(today);
 
   const [habits, setHabits] = useState([]);
 
   useEffect(() => {
     const getHabits = async() => {
       const updatedHabits = await apiService.getHabits(selectedDate);
+      console.log(selectedDate);
       setHabits(updatedHabits)
     }
     getHabits();

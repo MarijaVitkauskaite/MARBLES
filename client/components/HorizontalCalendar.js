@@ -18,6 +18,7 @@ function dateAddDays(date, days) {
 
 function generateHorizontalCalendarDates(datePast, dateFuture) {
   const today = new Date();
+  today.setHours(23, 59, 59, 999);
   let result = []; 
   // adding past days
   for (let i = 0; i < datePast; i++) {

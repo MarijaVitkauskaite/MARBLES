@@ -16,9 +16,9 @@ export default function AddHabit({navigation}){
         const newHabit = await apiService.sendHabits(habitToSend);
         if (newHabit === 'Too many habits') {
           alert('Too many habits');
-          navigation.replace('Habits');
-          clearhabit.current.clear();
         }
+        navigation.replace('Habits');
+        clearhabit.current.clear();
     }
   }
   
