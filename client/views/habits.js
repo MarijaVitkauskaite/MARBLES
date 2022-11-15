@@ -14,11 +14,11 @@ export default function Habits() {
 
   useEffect(() => {
     const getHabits = async() => {
-      const updatedHabits = await apiService.getHabits();
+      const updatedHabits = await apiService.getHabits(selectedDate);
       setHabits(updatedHabits)
     }
     getHabits();
-  }, [habits])
+  }, [selectedDate])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,6 +29,8 @@ export default function Habits() {
         />
         <HabitList 
           habits={habits}
+          setHabits={setHabits}
+          selectedDate={selectedDate}
         />
         <BottomNav
           navigation={navigation}

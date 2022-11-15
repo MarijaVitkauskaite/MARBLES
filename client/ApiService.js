@@ -38,36 +38,37 @@ apiService.sendHabits = (habits) => {
     .catch((err) => console.log(err));
 };
 
-apiService.getHabits = () => {
+apiService.getHabits = (selectedDate) => {
   return fetch(`${BASE_URL}/habits`, {
-    method: 'GET',
+    method: 'PUT',
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({selectedDate})
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };
 
-apiService.deleteHabits = (habits) => {
-  return fetch(`${BASE_URL}/habits/:id`, {
+apiService.deleteHabits = (habit, selectedDate) => {
+  return fetch(`${BASE_URL}/habits/${habit.id}`, {
     method: 'PUT',
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(habits),
+    body: JSON.stringify({selectedDate}),
   })
     .then((res) => res.json())
     .catch((err) => console.log(err))
 };
 
-apiService.updateHabits = (habits) => {
-  return fetch(`${BASE_URL}/habits/:id`, {
+apiService.updateHabits = (habit) => {
+  return fetch(`${BASE_URL}/habits/${habit.id}`, {
     method: 'PUT',
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(habits),
+    body: JSON.stringify(habit),
   })
     .then((res) => res.json())
     .catch((err) => console.log(err))

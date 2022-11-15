@@ -30,7 +30,8 @@ const loginUser = async(req, res) => {
       res.json('success');
     }
     else {
-      res.status(200).json("Please register")
+      res.status(200)
+      res.json('Please register')
     }
   } catch (error) {
     res.status(500);

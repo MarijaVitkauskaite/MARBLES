@@ -24,7 +24,11 @@ const saveHabits = async(req, res) => {
 const showHabits = async(req, res) => {
   try {
     const findHabits = await box.habit.findAll({where: {UserId: USER_ID}});
-    res.send(findHabits);  
+    const filteredHabits = findHabits.filter((habit) => {
+      if (!habit.deletedAt) return true; 
+      return habit.deletedAt.valueOf() > new Date(req.body.selectedDate).valueOf()
+    })
+    res.send(filteredHabits); 
   } catch (error) {
     res.status(500);
     console.log('error in showHabits: ', error);
@@ -34,7 +38,7 @@ const showHabits = async(req, res) => {
 const deleteHabits = async(req, res) => {
   try {
     const {id} = req.params;
-    await box.habit.update({where: {id: id}});
+    await box.habit.update({ deletedAt: req.body.selectedDate }, {where: {id: id}});
     res.body('Removed');
   } catch (error) {
     res.status(500);
@@ -45,7 +49,7 @@ const deleteHabits = async(req, res) => {
 const updateHabits = async(req, res) => {
   try {
     const {id} = req.params;
-    await box.habit.update({where: {id: id, date: new Date()}}); //convert to yyyy-MM-dd
+    await box.habit.update({where: {id: id, date: new Date().toISOString().slice(0, 10)}}); 
     // how to check that it only updates that date not the whole entire habit???
     res.body('Updated');
   } catch (error) {

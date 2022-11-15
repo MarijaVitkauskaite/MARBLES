@@ -20,6 +20,7 @@ export default function Login({navigation}) {
         alert('Please enter password');
         return;
     }
+    
     const result = await apiService.login(userDataToSend);
     if (result === 'Please register') {
         alert('Please register');

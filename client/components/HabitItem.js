@@ -9,10 +9,8 @@ export default function Habits({habitName}) {
     setCheck(!check)
   }
 
-
-
   return (
-        <View style={styles.habit} >
+          <View style={styles.habit} >
           {check ? 
             <TouchableOpacity onPress={handleCheck}>
               <Image style={styles.tick} source={require('../assets/TickDone.png')}/> 
@@ -24,10 +22,9 @@ export default function Habits({habitName}) {
             <Text style={styles.text}>
                 {habitName}
             </Text>
-        </View>
+          </View>
   )
 }
-
 const styles = StyleSheet.create({
   habit: {
     height: 70,
