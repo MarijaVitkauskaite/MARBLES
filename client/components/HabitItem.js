@@ -1,26 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Image, Text, TouchableOpacity, View} from 'react-native';
+import apiService from '../ApiService';
 
-export default function Habits({habitName}) {
+export default function Habits({habitName, selectedDate, getHabits}) {
 
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState();
 
-  const handleCheck = () => {
-    setCheck(!check)
+  useEffect (() => {
+    setCheck(habitName.completed.some(dateStr => dateStr === selectedDate.toISOString()))
+  }, [habitName]) //!!!!!!!!!!!!!!!!!!! MAGIC
+
+  const handleCheck = async(habitName) => { 
+    try {
+      await apiService.completeHabits(habitName, selectedDate);  
+      setCheck(true);
+    } catch (e) {
+      alert('Soemthing went wrong');
+    }
+    getHabits();
   }
 
   return (
           <View style={styles.habit} >
           {check ? 
-            <TouchableOpacity onPress={handleCheck}>
+            <TouchableOpacity>
               <Image style={styles.tick} source={require('../assets/TickDone.png')}/> 
             </TouchableOpacity> : 
-            <TouchableOpacity onPress={handleCheck}>
+            <TouchableOpacity onPress={() => handleCheck(habitName)}>
               <Image style={styles.tick} source={require('../assets/Tick.png')}/> 
             </TouchableOpacity>
             }
             <Text style={styles.text}>
-                {habitName}
+                {habitName.habit}
             </Text>
           </View>
   )

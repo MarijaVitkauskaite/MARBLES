@@ -6,7 +6,6 @@ import Calendar from './views/calendar';
 import Habits from './views/habits';
 import Register from './views/register';
 import AddHabit from './components/AddHabit';
-import { DateContext } from './context';
 
 const Stack = createStackNavigator();
 
@@ -25,11 +24,9 @@ function MyStack() {
 export default function App() {
   
   return (
-    <DateContext.Provider value={{ stuff: "things" }}>
       <NavigationContainer>
         <MyStack/>
       </NavigationContainer>
-    </DateContext.Provider>
   );
 }
 

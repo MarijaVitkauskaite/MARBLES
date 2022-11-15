@@ -7,6 +7,11 @@ module.exports  = (connection, DataTypes) => {
     deletedAt: {
         type: DataTypes.DATE,
         default: null
+    },
+    completed: {
+      type: DataTypes.ARRAY(DataTypes.DATE),
+      default: [],
+      allowNull: false
     }
   })
 };

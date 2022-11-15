@@ -17,8 +17,13 @@ export default function Habits() {
 
   const getHabits = async() => {
     const updatedHabits = await apiService.getHabits(selectedDate);
+    console.log('habits', updatedHabits)
     setHabits(updatedHabits)
   }
+
+  useEffect(() => {
+    console.log(habits);
+  }, [habits])
 
   useEffect(() => {
     getHabits();

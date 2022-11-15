@@ -9,6 +9,7 @@ router.post('/login', user.loginUser)
 
 router.post('/habits', habits.saveHabits)
 router.put('/habits', habits.showHabits)
-router.put('/habits/:id', habits.deleteHabits);
+router.put('/habits/delete/:id', habits.deleteHabits);
+router.put('/habits/complete/:id', habits.completeHabits);
 
 module.exports = router;

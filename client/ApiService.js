@@ -51,7 +51,7 @@ apiService.getHabits = (selectedDate) => {
 };
 
 apiService.deleteHabits = (habit, selectedDate) => {
-  return fetch(`${BASE_URL}/habits/${habit.id}`, {
+  return fetch(`${BASE_URL}/habits/delete/${habit.id}`, {
     method: 'PUT',
     credentials: 'include',
     mode: 'cors',
@@ -62,15 +62,15 @@ apiService.deleteHabits = (habit, selectedDate) => {
     .catch((err) => console.log(err))
 };
 
-apiService.updateHabits = (habit) => {
-  return fetch(`${BASE_URL}/habits/${habit.id}`, {
+apiService.completeHabits = (habit, selectedDate) => {
+  return fetch(`${BASE_URL}/habits/complete/${habit.id}`, {
     method: 'PUT',
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(habit),
+    body: JSON.stringify({selectedDate}),
   })
-    .then((res) => res.json())
+    .then((res) => res.text())
     .catch((err) => console.log(err))
 };
 
