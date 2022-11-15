@@ -1,15 +1,30 @@
-import {View, StyleSheet, Image, Text} from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, Image, Text, TouchableOpacity, View} from 'react-native';
 
 export default function Habits({habitName}) {
+
+  const [check, setCheck] = useState(false);
+
+  const handleCheck = () => {
+    setCheck(!check)
+  }
+
+
+
   return (
-    <View style={styles.container}>
-      <View style={styles.habit}>
-        <Image style={styles.tick} source={require('../assets/Tick.png')}/>
-        <Text style={styles.text}>
-            {habitName}
-        </Text>
-      </View>
-    </View>
+        <View style={styles.habit} >
+          {check ? 
+            <TouchableOpacity onPress={handleCheck}>
+              <Image style={styles.tick} source={require('../assets/TickDone.png')}/> 
+            </TouchableOpacity> : 
+            <TouchableOpacity onPress={handleCheck}>
+              <Image style={styles.tick} source={require('../assets/Tick.png')}/> 
+            </TouchableOpacity>
+            }
+            <Text style={styles.text}>
+                {habitName}
+            </Text>
+        </View>
   )
 }
 
