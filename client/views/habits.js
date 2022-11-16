@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, View } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import HorizontalCalendar from '../components/HorizontalCalendar';
 import HabitList from '../components/HabitList';
 import BottomNav from '../components/BottomNav';

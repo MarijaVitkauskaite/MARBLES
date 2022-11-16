@@ -5,7 +5,7 @@ import apiService from '../ApiService';
 export default function HabitList({habits, selectedDate, getHabits}) {
 
   const handleDelete = async(habitName) => {
-    const habitsDelete = await apiService.deleteHabits(habitName, selectedDate);  
+    await apiService.deleteHabits(habitName, selectedDate);  
     getHabits();
   }
 

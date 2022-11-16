@@ -40,7 +40,7 @@ const showHabits = async(req, res) => {
 const deleteHabits = async(req, res) => {
   try {
     const {id} = req.params;
-    await box.habit.update({ deletedAt: req.body.selectedDate }, {where: {id: id}});
+    await box.habit.update({deletedAt: req.body.selectedDate}, {where: {id: id}});
     res.send('Removed');
   } catch (error) {
     res.status(500);
@@ -51,17 +51,13 @@ const deleteHabits = async(req, res) => {
 const completeHabits = async(req, res) => {
   try {
     const {id} = req.params;
-    console.log(req.params)
     const habit = await box.habit.findOne({where: {id: id}}); 
-    console.log({habit, date: req.body.selectedDate});
-
     habit.completed = [...habit.completed, req.body.selectedDate];
-    console.log(habit.completed);
     await habit.save();
     res.send('Completed');
   } catch (error) {
     res.status(500);
-    console.log('error in updateHabits: ', error);
+    console.log('error in completeHabits: ', error);
   }
 }
 

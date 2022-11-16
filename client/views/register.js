@@ -36,7 +36,7 @@ export default function Register({navigation}) {
       <View style={styles.inputView}>
         <TextInput
           ref={clearEmail}
-          style={styles.TextInput}
+          style={styles.textInput}
           autoCapitalize='none'
           placeholder="EMAIL"
           placeholderTextColor="#353535"
@@ -46,7 +46,7 @@ export default function Register({navigation}) {
       <View style={styles.inputView}>
         <TextInput
           ref={clearPassword}
-          style={styles.TextInput}
+          style={styles.textInput}
           autoCapitalize='none'
           placeholder="PASSWORD"
           placeholderTextColor="#353535"
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: "center",
   },
-  TextInput: {
+  textInput: {
     flex: 1,
     alignItems: 'stretch'
   },

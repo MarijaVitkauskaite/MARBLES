@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet } from 'react-native';
-import {CalendarList, CalendarProvider} from 'react-native-calendars';
+import {CalendarList} from 'react-native-calendars';
 import { useState } from 'react';
 import BottomNav from '../components/BottomNav';
 import { useNavigation } from '@react-navigation/native';
