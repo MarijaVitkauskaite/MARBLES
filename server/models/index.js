@@ -1,3 +1,4 @@
+// TODO REORGANIZE AND RENAME
 const Sequelize = require('sequelize');
 
 const connection = new Sequelize('marbles', 'admin', 'codeworks', {

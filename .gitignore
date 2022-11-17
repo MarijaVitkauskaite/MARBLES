@@ -2,7 +2,7 @@
 node_modules/
 .expo/
 dist/
-.env
+client/.env
 npm-debug.*
 *.jks
 *.p8

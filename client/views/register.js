@@ -2,8 +2,8 @@ import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } fr
 import { useState, useRef } from 'react';
 import apiService from '../ApiService';
 
-export default function Register({navigation}) {
-
+// TODO TEST CODE / CLEAN CODE / LATER IMPLEMENT REDUX + REFACTOR CSS IN A DIFFERENT FILE=TESTING/CSS/COMPONENT
+export default function Register({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -11,33 +11,33 @@ export default function Register({navigation}) {
   const clearPassword = useRef();
 
   const handleSubmit = async () => {
-    const userDataToSend = {email, password};
+    const userDataToSend = { email, password };
     if (!email) {
-        alert('Please enter email address');
-        return;
+      alert('Please enter email address');
+      return;
     }
     if (!password) {
-        alert('Please enter password');
-        return;
+      alert('Please enter password');
+      return;
     }
     const result = await apiService.register(userDataToSend);
     if (result === 'Email already registered') {
-        alert('Email already registered');
-        clearEmail.current.clear();
-        clearPassword.current.clear();
+      alert('Email already registered');
+      clearEmail.current.clear();
+      clearPassword.current.clear();
     } else {
-        navigation.navigate('Habits');
+      navigation.navigate('Habits');
     }
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.loose} source={require('../assets/Loose.png')}/>
+      <Image style={styles.loose} source={require('../assets/Loose.png')} />
       <View style={styles.inputView}>
         <TextInput
           ref={clearEmail}
           style={styles.textInput}
-          autoCapitalize='none'
+          autoCapitalize="none"
           placeholder="EMAIL"
           placeholderTextColor="#353535"
           onChangeText={(email) => setEmail(email)}
@@ -47,31 +47,32 @@ export default function Register({navigation}) {
         <TextInput
           ref={clearPassword}
           style={styles.textInput}
-          autoCapitalize='none'
+          autoCapitalize="none"
           placeholder="PASSWORD"
           placeholderTextColor="#353535"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
       </View>
-      <TouchableOpacity 
-        style={styles.button} 
+      <TouchableOpacity
+        style={styles.button}
         onPress={() => {
-            handleSubmit();
+          handleSubmit();
         }}
       >
-      <Image style={styles.register} source={require('../assets/RegisterButton.png')}/>
+        <Image style={styles.register} source={require('../assets/RegisterButton.png')} />
       </TouchableOpacity>
-      <TouchableOpacity 
-        style={styles.button} 
-        onPress={() => {navigation.replace('Login')}}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.replace('Login');
+        }}
       >
-      <Image style={styles.orLogin} source={require('../assets/OrLogin.png')}/>
+        <Image style={styles.orLogin} source={require('../assets/OrLogin.png')} />
       </TouchableOpacity>
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -83,21 +84,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: '52.5%',
     width: 200,
-    height: 300
+    height: 300,
   },
   inputView: {
     bottom: '-20%',
-    backgroundColor: "#D9D9D9",
+    backgroundColor: '#D9D9D9',
     opacity: 0.6,
     borderRadius: 30,
-    width: "70%",
+    width: '70%',
     height: 50,
     marginBottom: 20,
-    alignItems: "center",
+    alignItems: 'center',
   },
   textInput: {
     flex: 1,
-    alignItems: 'stretch'
+    alignItems: 'stretch',
   },
   button: {
     bottom: '-20%',
@@ -105,6 +106,6 @@ const styles = StyleSheet.create({
   orLogin: {
     bottom: -120,
     width: 80,
-    height: 50
-  }
+    height: 50,
+  },
 });

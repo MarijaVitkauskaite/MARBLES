@@ -1,10 +1,6 @@
-
-import { REACT_APP_LOCAL_IP } from '@dotenv'
+import { REACT_APP_LOCAL_IP } from '@dotenv';
 const BASE_URL = REACT_APP_LOCAL_IP;
-
-console.log(BASE_URL, "baseurl")
-// console.log(REACT_APP_LOCAL_IP, "env")
-
+// TODO CLEAN CODE AND MAKING ASYNC AWAIT & CONVERT TO export const register => {}
 const apiService = {};
 
 apiService.register = (user) => {
@@ -22,6 +18,9 @@ apiService.register = (user) => {
 apiService.login = (user) => {
   return fetch(`${BASE_URL}/login`, {
     method: 'POST',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
@@ -49,7 +48,7 @@ apiService.getHabits = (selectedDate) => {
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ selectedDate })
+    body: JSON.stringify({ selectedDate }),
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
@@ -64,7 +63,7 @@ apiService.deleteHabits = (habit, selectedDate) => {
     body: JSON.stringify({ selectedDate }),
   })
     .then((res) => res.json())
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(err));
 };
 
 apiService.completeHabits = (habit, selectedDate) => {
@@ -76,7 +75,7 @@ apiService.completeHabits = (habit, selectedDate) => {
     body: JSON.stringify({ selectedDate }),
   })
     .then((res) => res.text())
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(err));
 };
 
 export default apiService;

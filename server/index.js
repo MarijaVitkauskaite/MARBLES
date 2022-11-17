@@ -4,12 +4,12 @@ const router = require('./router');
 const box = require('./models/index');
 
 const app = express();
-
-app.use(cors()); 
-app.use(express.json()); 
+// TODO enable cors only on sites with want + change console.log to more useful ones
+app.use(cors());
+app.use(express.json());
 app.use(router);
 
-(async() => {
+(async () => {
   try {
     await box.connection.sync(); // synchronize all models
     app.listen(3000, () => {

@@ -7,26 +7,24 @@ import Habits from './views/habits';
 import Register from './views/register';
 import AddHabit from './components/AddHabit';
 
+// TODO  a separate router component file && check
 const Stack = createStackNavigator();
-
 function MyStack() {
   return (
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Login" component={Login}/>
-        <Stack.Screen name="Register" component={Register}/>
-        <Stack.Screen name="Habits" component={Habits}/>
-        <Stack.Screen name="AddHabit" component={AddHabit}/>
-        <Stack.Screen name="Calendar" component={Calendar}/>
-      </Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Habits" component={Habits} />
+      <Stack.Screen name="AddHabit" component={AddHabit} />
+      <Stack.Screen name="Calendar" component={Calendar} />
+    </Stack.Navigator>
   );
 }
 
 export default function App() {
-  
   return (
-      <NavigationContainer>
-        <MyStack/>
-      </NavigationContainer>
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
   );
 }
-
