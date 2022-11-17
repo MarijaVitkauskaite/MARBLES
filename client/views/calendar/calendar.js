@@ -1,14 +1,13 @@
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { CalendarList } from 'react-native-calendars';
 import { useState } from 'react';
 import BottomNav from '../../components/BottomNav';
-import { useNavigation } from '@react-navigation/native';
 import { styles, calendarStyle } from './style';
 export default function CalendarScroll({ navigation }) {
   const [selectedDay, setSelectedDay] = useState('');
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} data-testid="list">
       <CalendarList
         pastScrollRange={6}
         futureScrollRange={3}
