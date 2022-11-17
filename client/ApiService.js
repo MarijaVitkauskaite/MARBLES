@@ -1,4 +1,9 @@
-const BASE_URL = 'http://10.10.22.151:3000';
+
+import { REACT_APP_LOCAL_IP } from '@dotenv'
+const BASE_URL = REACT_APP_LOCAL_IP;
+
+console.log(BASE_URL, "baseurl")
+// console.log(REACT_APP_LOCAL_IP, "env")
 
 const apiService = {};
 
@@ -44,7 +49,7 @@ apiService.getHabits = (selectedDate) => {
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({selectedDate})
+    body: JSON.stringify({ selectedDate })
   })
     .then((res) => res.json())
     .catch((err) => console.log(err));
@@ -56,7 +61,7 @@ apiService.deleteHabits = (habit, selectedDate) => {
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({selectedDate}),
+    body: JSON.stringify({ selectedDate }),
   })
     .then((res) => res.json())
     .catch((err) => console.log(err))
@@ -68,7 +73,7 @@ apiService.completeHabits = (habit, selectedDate) => {
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({selectedDate}),
+    body: JSON.stringify({ selectedDate }),
   })
     .then((res) => res.text())
     .catch((err) => console.log(err))
