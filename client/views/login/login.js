@@ -1,8 +1,8 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
-import apiService from '../ApiService';
+import apiService from '../../ApiService';
 
-export default function Login({navigation}) {
+export default function Login({ navigation }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,30 +11,30 @@ export default function Login({navigation}) {
   const clearPassword = useRef();
 
   const handleSubmit = async () => {
-    const userDataToSend = {email, password};
+    const userDataToSend = { email, password };
     if (!email) {
-        alert('Please enter email address');
-        return;
+      alert('Please enter email address');
+      return;
     }
     if (!password) {
-        alert('Please enter password');
-        return;
+      alert('Please enter password');
+      return;
     }
-    
+
     const result = await apiService.login(userDataToSend);
     if (result === 'Please register') {
-        alert('Please register');
-        clearEmail.current.clear();
-        clearPassword.current.clear();
+      alert('Please register');
+      clearEmail.current.clear();
+      clearPassword.current.clear();
     } else {
-        navigation.replace('Habits');
+      navigation.replace('Habits');
     }
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.text} source={require('../assets/Frame.png')}/>
-      <Image style={styles.marble} source={require('../assets/Marbles.png')}/>
+      <Image style={styles.text} source={require('../../assets/Frame.png')} />
+      <Image style={styles.marble} source={require('../../assets/Marbles.png')} />
       <View style={styles.inputView}>
         <TextInput
           ref={clearEmail}
@@ -56,17 +56,17 @@ export default function Login({navigation}) {
           onChangeText={(password) => setPassword(password)}
         />
       </View>
-      <TouchableOpacity 
-        style={styles.button} 
+      <TouchableOpacity
+        style={styles.button}
         onPress={() => handleSubmit()}
       >
-        <Image style={styles.login} source={require('../assets/Group.png')}/>
+        <Image style={styles.login} source={require('../../assets/Group.png')} />
       </TouchableOpacity>
-      <TouchableOpacity 
-        style={styles.button} 
-        onPress={() => {navigation.replace('Register')}} 
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => { navigation.replace('Register') }}
       >
-        <Image style={styles.register} source={require('../assets/Register.png')}/>
+        <Image style={styles.register} source={require('../../assets/Register.png')} />
       </TouchableOpacity>
     </SafeAreaView>
   );

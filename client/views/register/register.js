@@ -1,6 +1,6 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
-import apiService from '../ApiService';
+import apiService from '../../ApiService';
 
 // TODO TEST CODE / CLEAN CODE / LATER IMPLEMENT REDUX + REFACTOR CSS IN A DIFFERENT FILE=TESTING/CSS/COMPONENT
 export default function Register({ navigation }) {
@@ -32,7 +32,7 @@ export default function Register({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.loose} source={require('../assets/Loose.png')} />
+      <Image style={styles.loose} source={require('../../assets/Loose.png')} />
       <View style={styles.inputView}>
         <TextInput
           ref={clearEmail}
@@ -60,7 +60,7 @@ export default function Register({ navigation }) {
           handleSubmit();
         }}
       >
-        <Image style={styles.register} source={require('../assets/RegisterButton.png')} />
+        <Image style={styles.register} source={require('../../assets/RegisterButton.png')} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
@@ -68,7 +68,7 @@ export default function Register({ navigation }) {
           navigation.replace('Login');
         }}
       >
-        <Image style={styles.orLogin} source={require('../assets/OrLogin.png')} />
+        <Image style={styles.orLogin} source={require('../../assets/OrLogin.png')} />
       </TouchableOpacity>
     </SafeAreaView>
   );
