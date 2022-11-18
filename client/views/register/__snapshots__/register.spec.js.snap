@@ -51,6 +51,7 @@ exports[`renders correctly 1`] = `
           "flex": 1,
         }
       }
+      testID="email-input-register"
     />
   </View>
   <View

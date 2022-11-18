@@ -13,19 +13,18 @@ export default function Login({ navigation }) {
 
   const handleSubmit = async () => {
     const userDataToSend = { email, password };
-    // if (!email) {
-    //   Alert.alert('Please enter email address');
-    //   return;
-    // }
-    // if (!password) {
-    //   Alert.alert('Please enter password');
-    //   return;
-    // }
+    if (!email) {
+      Alert.alert('Please enter email address');
+      console.log('123123')
+      return;
+    }
+    if (!password) {
+      Alert.alert('Please enter password');
+      return;
+    }
 
     const result = await apiService.login(userDataToSend);
-    console.log(result, "result")
-    console.log(email, "email")
-    console.warn(result, "result")
+
     if (result === 'Please register') {
       Alert.alert('Please register');
       clearEmail.current.clear();
@@ -70,6 +69,7 @@ export default function Login({ navigation }) {
         <Image style={styles.login} source={require('../../assets/Group.png')} />
       </TouchableOpacity>
       <TouchableOpacity
+        testID='register-button'
         style={styles.button}
         onPress={() => { navigation.replace('Register') }}
       >

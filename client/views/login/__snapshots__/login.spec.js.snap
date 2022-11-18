@@ -146,6 +146,7 @@ exports[`Login page should render correctly 1`] = `
         "opacity": 1,
       }
     }
+    testID="register-button"
   >
     <Image
       source={

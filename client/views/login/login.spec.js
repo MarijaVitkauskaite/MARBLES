@@ -2,9 +2,12 @@ import React from 'react';
 // import renderer, { act } from 'react-test-renderer';
 import Login from './login';
 import { Alert } from 'react-native';
-import { render, act, fireEvent, screen } from '@testing-library/react-native'
+import { render, act, fireEvent, screen } from '@testing-library/react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import App from '../../App'
 
 
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 jest.spyOn(Alert, 'alert');
 
 // const element = screen.getByTestId('unique-id');
@@ -48,6 +51,19 @@ describe('Login page', () => {
     fireEvent.press(button)
     const errorMessageText = 'Please register'
     expect(Alert.alert).toHaveBeenCalledWith(errorMessageText)
+  });
+
+  test('should go to register page when click the button', async () => {
+    const component = (
+      <NavigationContainer>
+        <App />
+      </NavigationContainer>
+    );
+    render(component);
+    const button = screen.getByTestId("register-button");
+    fireEvent.press(button)
+    const registerEmailInput = screen.getByTestId("email-input-register");
+    expect(registerEmailInput).toBeTruthy();
   })
 })
 

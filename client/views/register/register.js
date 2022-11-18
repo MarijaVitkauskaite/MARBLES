@@ -35,6 +35,7 @@ export default function Register({ navigation }) {
       <Image style={styles.loose} source={require('../../assets/Loose.png')} />
       <View style={styles.inputView}>
         <TextInput
+          testID='email-input-register'
           ref={clearEmail}
           style={styles.textInput}
           autoCapitalize="none"
