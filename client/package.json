@@ -9,15 +9,6 @@
     "web": "expo start --web",
     "test": "jest"
   },
-<<<<<<< HEAD
-  "jest": {
-    "preset": "react-native",
-    "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
-    ]
-  },
-=======
->>>>>>> development
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.19.6",
     "@expo/webpack-config": "^0.17.2",
@@ -45,10 +36,7 @@
     "jest": "^27.5.1",
     "jest-expo": "^47.0.1",
     "jest-react-native": "^18.0.0",
-<<<<<<< HEAD
-=======
     "react-native-reanimated": "^2.13.0",
->>>>>>> development
     "react-test-renderer": "18.1.0"
   },
   "private": true
