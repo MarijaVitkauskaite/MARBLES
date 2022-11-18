@@ -10,7 +10,10 @@
     "test": "jest"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ]
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
@@ -29,7 +32,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "jest-expo": "^47.0.1"
+    "@jest/globals": "^29.3.1",
+    "@testing-library/jest-native": "^5.3.0",
+    "@testing-library/react-native": "^10.1.1",
+    "babel-jest": "^29.3.1",
+    "babel-preset-react-native": "^4.0.1",
+    "jest": "^27.5.1",
+    "jest-expo": "^47.0.1",
+    "jest-react-native": "^18.0.0",
+    "react-test-renderer": "18.1.0"
   },
   "private": true
 }

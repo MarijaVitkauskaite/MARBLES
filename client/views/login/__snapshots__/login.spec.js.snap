@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`Login page should render correctly 1`] = `
 <RCTSafeAreaView
   style={
     Object {
@@ -64,6 +64,7 @@ exports[`renders correctly 1`] = `
           "flex": 1,
         }
       }
+      testID="email-input"
     />
   </View>
   <View
@@ -92,6 +93,7 @@ exports[`renders correctly 1`] = `
           "flex": 1,
         }
       }
+      testID="password-input"
     />
   </View>
   <View

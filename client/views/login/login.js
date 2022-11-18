@@ -13,18 +13,21 @@ export default function Login({ navigation }) {
 
   const handleSubmit = async () => {
     const userDataToSend = { email, password };
-    if (!email) {
-      Alert.alert('Please enter email address');
-      return;
-    }
-    if (!password) {
-      alert('Please enter password');
-      return;
-    }
+    // if (!email) {
+    //   Alert.alert('Please enter email address');
+    //   return;
+    // }
+    // if (!password) {
+    //   Alert.alert('Please enter password');
+    //   return;
+    // }
 
     const result = await apiService.login(userDataToSend);
+    console.log(result, "result")
+    console.log(email, "email")
+    console.warn(result, "result")
     if (result === 'Please register') {
-      alert('Please register');
+      Alert.alert('Please register');
       clearEmail.current.clear();
       clearPassword.current.clear();
     } else {
@@ -38,6 +41,7 @@ export default function Login({ navigation }) {
       <Image style={styles.marble} source={require('../../assets/Marbles.png')} />
       <View style={styles.inputView}>
         <TextInput
+          testID='email-input'
           ref={clearEmail}
           style={styles.TextInput}
           autoCapitalize='none'
@@ -48,6 +52,7 @@ export default function Login({ navigation }) {
       </View>
       <View style={styles.inputView}>
         <TextInput
+          testID='password-input'
           ref={clearPassword}
           style={styles.TextInput}
           autoCapitalize='none'
