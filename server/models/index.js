@@ -4,6 +4,7 @@ const Sequelize = require('sequelize');
 const connection = new Sequelize('marbles', 'admin', 'codeworks', {
   host: 'localhost',
   dialect: 'postgres',
+  logging: false
 });
 
 const box = {};
