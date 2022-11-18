@@ -8,9 +8,9 @@ const registerUser = async (req, res) => {
     if (emailExists) {
       res.status(200).json('Email already registered');
     } else {
-      await box.user.create({ email: email, password: password });
+      const user = await box.user.create({ email: email, password: password });
       res.status(201);
-      res.json('success');
+      res.json(user);
     }
   } catch (error) {
     res.status(500);

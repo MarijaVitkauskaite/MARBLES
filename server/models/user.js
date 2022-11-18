@@ -5,6 +5,7 @@ module.exports = (connection, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 1,
       primaryKey: true,
+      autoIncrement: true,
     },
     email: {
       type: DataTypes.STRING,
