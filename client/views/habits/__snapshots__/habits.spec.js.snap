@@ -14904,6 +14904,7 @@ exports[`Habits component Habits renders correctly 1`] = `
         "width": 350,
       }
     }
+    testID="container"
   />
   <View
     style={
