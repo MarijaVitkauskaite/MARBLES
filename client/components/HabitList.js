@@ -1,5 +1,5 @@
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
-import HabitItem from './HabitItem';
+import HabitItem from './HabitItem/HabitItem';
 import apiService from '../ApiService';
 
 export default function HabitList({ habits, selectedDate, getHabits, setHabits }) {
