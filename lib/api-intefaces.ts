@@ -4,7 +4,7 @@ export interface Habit {
   completed: Date[];
 }
 
-export interface USer {
+export interface User {
   id: number;
   email: string;
   password: string;
