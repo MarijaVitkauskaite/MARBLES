@@ -14,28 +14,15 @@ exports[`renders correctly 1`] = `
   <Image
     source={
       Object {
-        "testUri": "../../../assets/Frame.png",
+        "testUri": "../../../assets/Loose.png",
       }
     }
     style={
       Object {
-        "bottom": "70%",
-        "position": "absolute",
-      }
-    }
-  />
-  <Image
-    source={
-      Object {
-        "testUri": "../../../assets/Marbles.png",
-      }
-    }
-    style={
-      Object {
-        "bottom": "47.5%",
+        "bottom": "52.5%",
         "height": 300,
         "position": "absolute",
-        "width": 300,
+        "width": 200,
       }
     }
   />
@@ -64,6 +51,7 @@ exports[`renders correctly 1`] = `
           "flex": 1,
         }
       }
+      testID="email-input-register"
     />
   </View>
   <View
@@ -115,13 +103,7 @@ exports[`renders correctly 1`] = `
     <Image
       source={
         Object {
-          "testUri": "../../../assets/Group.png",
-        }
-      }
-      style={
-        Object {
-          "height": 50,
-          "width": 100,
+          "testUri": "../../../assets/RegisterButton.png",
         }
       }
     />
@@ -147,12 +129,14 @@ exports[`renders correctly 1`] = `
     <Image
       source={
         Object {
-          "testUri": "../../../assets/Register.png",
+          "testUri": "../../../assets/OrLogin.png",
         }
       }
       style={
         Object {
-          "top": 120,
+          "bottom": -120,
+          "height": 50,
+          "width": 80,
         }
       }
     />

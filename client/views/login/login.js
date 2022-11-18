@@ -1,8 +1,13 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
-import apiService from '../ApiService';
+import apiService from '../../ApiService';
+import { Alert } from 'react-native';//added for test
 
 export default function Login({ navigation }) {
+<<<<<<< HEAD:client/views/login/login.js
+
+=======
+>>>>>>> development:client/views/login.js
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,17 +17,31 @@ export default function Login({ navigation }) {
   const handleSubmit = async () => {
     const userDataToSend = { email, password };
     if (!email) {
+<<<<<<< HEAD:client/views/login/login.js
+      Alert.alert('Please enter email address');
+      console.log('123123')
+      return;
+    }
+    if (!password) {
+      Alert.alert('Please enter password');
+=======
       alert('Please enter email address');
       return;
     }
     if (!password) {
       alert('Please enter password');
+>>>>>>> development:client/views/login.js
       return;
     }
 
     const result = await apiService.login(userDataToSend);
+
     if (result === 'Please register') {
+<<<<<<< HEAD:client/views/login/login.js
+      Alert.alert('Please register');
+=======
       alert('Please register');
+>>>>>>> development:client/views/login.js
       clearEmail.current.clear();
       clearPassword.current.clear();
     } else {
@@ -32,10 +51,16 @@ export default function Login({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+<<<<<<< HEAD:client/views/login/login.js
+      <Image style={styles.text} source={require('../../assets/Frame.png')} />
+      <Image style={styles.marble} source={require('../../assets/Marbles.png')} />
+=======
       <Image style={styles.text} source={require('../assets/Frame.png')} />
       <Image style={styles.marble} source={require('../assets/Marbles.png')} />
+>>>>>>> development:client/views/login.js
       <View style={styles.inputView}>
         <TextInput
+          testID='email-input'
           ref={clearEmail}
           style={styles.TextInput}
           autoCapitalize="none"
@@ -46,6 +71,7 @@ export default function Login({ navigation }) {
       </View>
       <View style={styles.inputView}>
         <TextInput
+          testID='password-input'
           ref={clearPassword}
           style={styles.TextInput}
           autoCapitalize="none"
@@ -55,6 +81,21 @@ export default function Login({ navigation }) {
           onChangeText={(password) => setPassword(password)}
         />
       </View>
+<<<<<<< HEAD:client/views/login/login.js
+      <TouchableOpacity
+        testID='login-button'
+        style={styles.button}
+        onPress={() => handleSubmit()}
+      >
+        <Image style={styles.login} source={require('../../assets/Group.png')} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        testID='register-button'
+        style={styles.button}
+        onPress={() => { navigation.replace('Register') }}
+      >
+        <Image style={styles.register} source={require('../../assets/Register.png')} />
+=======
       <TouchableOpacity style={styles.button} onPress={() => handleSubmit()}>
         <Image style={styles.login} source={require('../assets/Group.png')} />
       </TouchableOpacity>
@@ -65,6 +106,7 @@ export default function Login({ navigation }) {
         }}
       >
         <Image style={styles.register} source={require('../assets/Register.png')} />
+>>>>>>> development:client/views/login.js
       </TouchableOpacity>
     </SafeAreaView>
   );
