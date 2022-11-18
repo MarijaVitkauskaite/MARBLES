@@ -1,6 +1,7 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
 import apiService from '../../ApiService';
+import { Alert } from 'react-native';//added for test
 
 export default function Login({ navigation }) {
 
@@ -13,7 +14,7 @@ export default function Login({ navigation }) {
   const handleSubmit = async () => {
     const userDataToSend = { email, password };
     if (!email) {
-      alert('Please enter email address');
+      Alert.alert('Please enter email address');
       return;
     }
     if (!password) {
@@ -57,6 +58,7 @@ export default function Login({ navigation }) {
         />
       </View>
       <TouchableOpacity
+        testID='login-button'
         style={styles.button}
         onPress={() => handleSubmit()}
       >
