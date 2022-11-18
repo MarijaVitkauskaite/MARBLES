@@ -1,0 +1,451 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calendar component Calendar renders correctly 1`] = `
+<RCTSafeAreaView
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#7197AC",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": undefined,
+      }
+    }
+  >
+    <RCTScrollView
+      data={
+        Array [
+          "2022-05-18T15:15:20.010Z",
+          "2022-06-18T15:15:20.010Z",
+          "2022-07-18T15:15:20.010Z",
+          "2022-08-18T15:15:20.010Z",
+          "2022-09-18T15:15:20.010Z",
+          "2022-10-18T15:15:20.010Z",
+          "2022-11-18T16:15:20.010Z",
+          "2022-12-18T16:15:20.010Z",
+          "2023-01-18T16:15:20.010Z",
+          "2023-02-18T16:15:20.010Z",
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      getItemLayout={[Function]}
+      horizontal={false}
+      initialNumToRender={3}
+      initialScrollIndex={6}
+      keyExtractor={[Function]}
+      nestedScrollEnabled={true}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEnabled={true}
+      scrollEventThrottle={50}
+      scrollsToTop={false}
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
+      stickyHeaderIndices={Array []}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "white",
+          },
+          undefined,
+        ]
+      }
+      testID="undefined.list"
+      viewabilityConfigCallbackPairs={
+        Array [
+          Object {
+            "onViewableItemsChanged": [Function],
+            "viewabilityConfig": Object {
+              "viewAreaCoveragePercentThreshold": 20,
+            },
+          },
+        ]
+      }
+    >
+      <View>
+        <View
+          style={null}
+        >
+          <Text
+            style={
+              Array [
+                Array [
+                  Object {
+                    "minHeight": 360,
+                    "width": 750,
+                  },
+                  Object {
+                    "paddingLeft": 15,
+                    "paddingRight": 15,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "color": "#2d4150",
+                  "fontSize": 20,
+                  "fontWeight": "200",
+                },
+              ]
+            }
+          >
+            2022-05-18
+          </Text>
+        </View>
+        <View
+          style={null}
+        >
+          <Text
+            style={
+              Array [
+                Array [
+                  Object {
+                    "minHeight": 360,
+                    "width": 750,
+                  },
+                  Object {
+                    "paddingLeft": 15,
+                    "paddingRight": 15,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "color": "#2d4150",
+                  "fontSize": 20,
+                  "fontWeight": "200",
+                },
+              ]
+            }
+          >
+            2022-06-18
+          </Text>
+        </View>
+        <View
+          style={null}
+        >
+          <Text
+            style={
+              Array [
+                Array [
+                  Object {
+                    "minHeight": 360,
+                    "width": 750,
+                  },
+                  Object {
+                    "paddingLeft": 15,
+                    "paddingRight": 15,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "color": "#2d4150",
+                  "fontSize": 20,
+                  "fontWeight": "200",
+                },
+              ]
+            }
+          >
+            2022-07-18
+          </Text>
+        </View>
+        <View
+          style={null}
+        >
+          <Text
+            style={
+              Array [
+                Array [
+                  Object {
+                    "minHeight": 360,
+                    "width": 750,
+                  },
+                  Object {
+                    "paddingLeft": 15,
+                    "paddingRight": 15,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "color": "#2d4150",
+                  "fontSize": 20,
+                  "fontWeight": "200",
+                },
+              ]
+            }
+          >
+            2022-08-18
+          </Text>
+        </View>
+        <View
+          style={null}
+        >
+          <Text
+            style={
+              Array [
+                Array [
+                  Object {
+                    "minHeight": 360,
+                    "width": 750,
+                  },
+                  Object {
+                    "paddingLeft": 15,
+                    "paddingRight": 15,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "color": "#2d4150",
+                  "fontSize": 20,
+                  "fontWeight": "200",
+                },
+              ]
+            }
+          >
+            2022-09-18
+          </Text>
+        </View>
+        <View
+          style={null}
+        >
+          <Text
+            style={
+              Array [
+                Array [
+                  Object {
+                    "minHeight": 360,
+                    "width": 750,
+                  },
+                  Object {
+                    "paddingLeft": 15,
+                    "paddingRight": 15,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "color": "#2d4150",
+                  "fontSize": 20,
+                  "fontWeight": "200",
+                },
+              ]
+            }
+          >
+            2022-10-18
+          </Text>
+        </View>
+        <View
+          style={null}
+        >
+          <Text
+            style={
+              Array [
+                Array [
+                  Object {
+                    "minHeight": 360,
+                    "width": 750,
+                  },
+                  Object {
+                    "paddingLeft": 15,
+                    "paddingRight": 15,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "color": "#2d4150",
+                  "fontSize": 20,
+                  "fontWeight": "200",
+                },
+              ]
+            }
+          >
+            2022-11-18
+          </Text>
+        </View>
+        <View
+          style={null}
+        >
+          <Text
+            style={
+              Array [
+                Array [
+                  Object {
+                    "minHeight": 360,
+                    "width": 750,
+                  },
+                  Object {
+                    "paddingLeft": 15,
+                    "paddingRight": 15,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "color": "#2d4150",
+                  "fontSize": 20,
+                  "fontWeight": "200",
+                },
+              ]
+            }
+          >
+            2022-12-18
+          </Text>
+        </View>
+        <View
+          style={null}
+        >
+          <Text
+            style={
+              Array [
+                Array [
+                  Object {
+                    "minHeight": 360,
+                    "width": 750,
+                  },
+                  Object {
+                    "paddingLeft": 15,
+                    "paddingRight": 15,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "color": "#2d4150",
+                  "fontSize": 20,
+                  "fontWeight": "200",
+                },
+              ]
+            }
+          >
+            2023-01-18
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "height": 360,
+            }
+          }
+        />
+      </View>
+    </RCTScrollView>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#7197AC",
+        "bottom": 0,
+        "display": "absolute",
+        "flexDirection": "row",
+        "height": "10%",
+        "justifyContent": "space-around",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../assets/Calendar.png",
+          }
+        }
+        style={
+          Object {
+            "height": 35,
+            "width": 35,
+          }
+        }
+      />
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../assets/Update.png",
+          }
+        }
+        style={
+          Object {
+            "height": 35,
+            "width": 35,
+          }
+        }
+      />
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../assets/LogOut.png",
+          }
+        }
+        style={
+          Object {
+            "height": 35,
+            "width": 30,
+          }
+        }
+      />
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;
