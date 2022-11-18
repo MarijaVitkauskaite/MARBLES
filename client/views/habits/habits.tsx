@@ -12,15 +12,14 @@ export default function Habits({ navigation }) {
   today.setHours(23, 59, 59, 999);
 
   const [selectedDate, setSelectedDate]  = useState<Date>(today);
-
+  // const [user , setUser] = useState<User>({})
   const [habits, setHabits] = useState<Habit[]>([]);
-
 
   const getHabits = async () => {
     const updatedHabits = await apiService.getHabits(selectedDate);
     setHabits(updatedHabits);
   };
-
+// TODO SEND REQUEST WITH USER INFOS  === >  RETURN USER ====> STORE USEER setUser ({userFromDatabase}) RENAME TO HOMEPAGE
   useEffect(() => {
     getHabits();
   }, [selectedDate]);

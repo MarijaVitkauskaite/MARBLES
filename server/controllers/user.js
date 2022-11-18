@@ -6,11 +6,11 @@ const registerUser = async (req, res) => {
   try {
     const emailExists = await box.user.findOne({ where: { email: email } });
     if (emailExists) {
-      res.status(200).json('Email already registered');
+      res.status(200).json('send back user');
     } else {
       const user = await box.user.create({ email: email, password: password });
       res.status(201);
-      res.json(user);
+      res.json('send back users');
     }
   } catch (error) {
     res.status(500);
