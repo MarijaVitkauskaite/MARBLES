@@ -7,7 +7,7 @@ export default function CalendarScroll({ navigation }) {
   const [selectedDay, setSelectedDay] = useState('');
 
   return (
-    <SafeAreaView style={styles.container} data-testid="list">
+    <SafeAreaView style={styles.container}>
       <CalendarList
         pastScrollRange={6}
         futureScrollRange={3}
@@ -21,6 +21,7 @@ export default function CalendarScroll({ navigation }) {
           navigation.replace('AddHabit');
         }}
         theme={calendarStyle}
+        data-testid="calendar-list"
       />
       <BottomNav navigation={navigation} />
     </SafeAreaView>

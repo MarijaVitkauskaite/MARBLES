@@ -2,7 +2,6 @@
 
 exports[`Calendar component Calendar renders correctly 1`] = `
 <RCTSafeAreaView
-  data-testid="list"
   style={
     Object {
       "alignItems": "center",
@@ -22,16 +21,16 @@ exports[`Calendar component Calendar renders correctly 1`] = `
     <RCTScrollView
       data={
         Array [
-          "2022-05-17T19:57:24.944Z",
-          "2022-06-17T19:57:24.944Z",
-          "2022-07-17T19:57:24.944Z",
-          "2022-08-17T19:57:24.944Z",
-          "2022-09-17T19:57:24.944Z",
-          "2022-10-17T19:57:24.944Z",
-          "2022-11-17T20:57:24.944Z",
-          "2022-12-17T20:57:24.944Z",
-          "2023-01-17T20:57:24.944Z",
-          "2023-02-17T20:57:24.944Z",
+          "2022-05-18T15:15:20.010Z",
+          "2022-06-18T15:15:20.010Z",
+          "2022-07-18T15:15:20.010Z",
+          "2022-08-18T15:15:20.010Z",
+          "2022-09-18T15:15:20.010Z",
+          "2022-10-18T15:15:20.010Z",
+          "2022-11-18T16:15:20.010Z",
+          "2022-12-18T16:15:20.010Z",
+          "2023-01-18T16:15:20.010Z",
+          "2023-02-18T16:15:20.010Z",
         ]
       }
       getItem={[Function]}
@@ -103,7 +102,7 @@ exports[`Calendar component Calendar renders correctly 1`] = `
               ]
             }
           >
-            2022-05-17
+            2022-05-18
           </Text>
         </View>
         <View
@@ -131,7 +130,7 @@ exports[`Calendar component Calendar renders correctly 1`] = `
               ]
             }
           >
-            2022-06-17
+            2022-06-18
           </Text>
         </View>
         <View
@@ -159,7 +158,7 @@ exports[`Calendar component Calendar renders correctly 1`] = `
               ]
             }
           >
-            2022-07-17
+            2022-07-18
           </Text>
         </View>
         <View
@@ -187,7 +186,7 @@ exports[`Calendar component Calendar renders correctly 1`] = `
               ]
             }
           >
-            2022-08-17
+            2022-08-18
           </Text>
         </View>
         <View
@@ -215,7 +214,7 @@ exports[`Calendar component Calendar renders correctly 1`] = `
               ]
             }
           >
-            2022-09-17
+            2022-09-18
           </Text>
         </View>
         <View
@@ -243,7 +242,7 @@ exports[`Calendar component Calendar renders correctly 1`] = `
               ]
             }
           >
-            2022-10-17
+            2022-10-18
           </Text>
         </View>
         <View
@@ -271,7 +270,7 @@ exports[`Calendar component Calendar renders correctly 1`] = `
               ]
             }
           >
-            2022-11-17
+            2022-11-18
           </Text>
         </View>
         <View
@@ -299,7 +298,7 @@ exports[`Calendar component Calendar renders correctly 1`] = `
               ]
             }
           >
-            2022-12-17
+            2022-12-18
           </Text>
         </View>
         <View
@@ -327,7 +326,7 @@ exports[`Calendar component Calendar renders correctly 1`] = `
               ]
             }
           >
-            2023-01-17
+            2023-01-18
           </Text>
         </View>
         <View
