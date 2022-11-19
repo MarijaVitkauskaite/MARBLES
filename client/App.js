@@ -6,7 +6,7 @@ import Calendar from './views/calendar/calendar';
 import Habits from './views/habits/habits';
 import Register from './views/register/register';
 
-import AddHabit from './components/AddHabit';
+import AddHabit from './components/AddHabit/AddHabit';
 
 // TODO  a separate router component file && check
 const Stack = createStackNavigator();
