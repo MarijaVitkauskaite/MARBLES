@@ -1,7 +1,15 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
-import apiService from '../../ApiService';
+// import apiService from '../../ApiService';
 import { Alert } from 'react-native';//added for test
+
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../../firebaseConfig'
+
+
+
+// // TODO: Replace the following with your app's Firebase project configuration
+
 
 export default function Login({ navigation }) {
 
@@ -11,8 +19,33 @@ export default function Login({ navigation }) {
   const clearEmail = useRef();
   const clearPassword = useRef();
 
+  //this watches when Auth state changes
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      //if login auto redirect to habbit page
+      const uid = user.uid;
+      console.log(uid)
+      navigation.replace('Habits');
+      // ...
+    } else {
+      // User is signed out
+      // ...
+      // TODO: return to the landing page. And sign out function needed
+      //SignOut function:
+      // import { signOut } from "firebase/auth";
+
+      // signOut(auth).then(() => {
+      //   // Sign-out successful.
+      // }).catch((error) => {
+      //   // An error happened.
+      // });
+    }
+  });
+
   const handleSubmit = async () => {
-    const userDataToSend = { email, password };
+    // const userDataToSend = { email, password };
     if (!email) {
       Alert.alert('Please enter email address');
       console.log('123123')
@@ -24,17 +57,40 @@ export default function Login({ navigation }) {
       return;
     }
 
-    const result = await apiService.login(userDataToSend);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        if (user) {
+          navigation.replace('Habits');
+        }
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
 
-    if (result === 'Please register') {
-      Alert.alert('Please register');
 
-      clearEmail.current.clear();
-      clearPassword.current.clear();
-    } else {
-      navigation.replace('Habits');
-    }
+
+
+    //   const result = await apiService.login(userDataToSend);
+
+    //   if (result === 'Please register') {
+    //     Alert.alert('Please register');
+
+    //     clearEmail.current.clear();
+    //     clearPassword.current.clear();
+    //   } else {
+    //     navigation.replace('Habits');
+    //   }
+
   };
+
+
+
+
+
 
   return (
     <SafeAreaView style={styles.container}>
