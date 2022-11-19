@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const router = require('./router.ts');
+const router = require('./router');
 import {box}  from './schemas/index'
 
 const app = express();

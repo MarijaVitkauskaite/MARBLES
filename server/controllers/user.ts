@@ -1,6 +1,5 @@
 const {createUser, doesEmailExist} = require('../models/userFunctions');
 // TODO refactor in controller and model different files
-
 const registerUser = async (req: any, res: any) => {
   const { email, password } = req.body;
   try {

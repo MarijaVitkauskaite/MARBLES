@@ -1,6 +1,6 @@
 const express = require('express');
-const habits = require('./controllers/habits.ts');
-const user = require('./controllers/user.ts');
+const habits = require('./controllers/habits');
+const user = require('./controllers/user');
 
 const router = express.Router();
 // TODO add get /delte  methods  instead of put?

@@ -9,8 +9,8 @@ const connection = new Sequelize('marbles', 'admin', 'codeworks', {
 
 const box: any = {};
 
-box.user = require('./user.ts')(connection, Sequelize.DataTypes);
-box.habit = require('./habit.ts')(connection, Sequelize.DataTypes);
+box.user = require('./user')(connection, Sequelize.DataTypes);
+box.habit = require('./habit')(connection, Sequelize.DataTypes);
 
 box.user.hasMany(box.habit); 
 
