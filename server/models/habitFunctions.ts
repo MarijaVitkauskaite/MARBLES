@@ -1,22 +1,22 @@
-const { Op } = require('sequelize');
-const box = require('../schemas/index');
+import { Op } from 'sequelize'
+import { box } from '../schemas/index'
 
-async function getHabits(USER_ID: number) {
-  return await box.habit.findAll({ where: { UserId: USER_ID, deletedAt: null } })
+async function getHabits(id: number) {
+  return await box.habit.findAll({ where: { id: id, deletedAt: null } })
 }
 
 async function createHabit(habit: any){
 return await box.habit.create(habit)
 }
 
-async function getHabitsByDate(USER_ID: number, date: string) {
-  return await box.habit.findAll({where: { UserId: USER_ID, createdAt: { [Op.lt]: new Date(date) } },});
+async function getHabitsByDate(id: number, date: string) {
+  return await box.habit.findAll({where: { id: id, createdAt: { [Op.lt]: new Date(date) } },});
 }
 
 async function filterHabits(habits: any, date: any) {
   const data = await habits.filter((habit: any) => {
       if (!habit.deletedAt) return true;
-      return habit.deletedAt.valueOf() > new Date(date).valueOf();
+    return habit.deletedAt.valueOf() > new Date(date).valueOf();
   });
   return data
 }

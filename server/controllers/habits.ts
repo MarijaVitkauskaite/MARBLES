@@ -5,7 +5,7 @@ import { getHabits, createHabit, getHabitsByDate, filterHabits, delHabits, compl
 
 const saveHabits = async (req: any, res: any) => {
   const habit = req.body.habit;
-  const habitWithUser = { habit, UserId: req.body.id, completed: [] };
+  const habitWithUser = { habit, id: req.body.id, completed: [] };
   try {
     const countHabits = await getHabits(req.body.id);
     if (countHabits.length < 5) {

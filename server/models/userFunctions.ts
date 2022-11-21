@@ -1,13 +1,15 @@
 import { User } from "../../lib/api-intefaces";
-const box = require('../schemas/index');
+import { box } from '../schemas/index'
 
 
 async function doesEmailExist(email: string) {
-return await box.user.findOne({ where: { email: email } })
+  const data = await box.user.findOne({ where: { email: email } });
+  return data
 }
 
 async function createUser(email: string, id: string): Promise<User>{
-  return await box.user.create({ email: email, id: id })
+  const data = await box.user.create({ email: email, id: id })
+  return data
 }
 
 module.exports = {createUser, doesEmailExist}
