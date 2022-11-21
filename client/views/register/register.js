@@ -27,7 +27,10 @@ export default function Register({ navigation }) {
         // Signed in
         const user = userCredential.user;
         const uid = user.uid;
-        console.log(uid);
+        const userDataToSend = { User: { id: uid } }
+        const result = apiService.register(userDataToSend)
+        console.log(uid)
+
         navigation.replace('Habits');
         // ...
       })
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
     bottom: '-20%',
   },
   orLogin: {
-    bottom: -120,
+    top: 50,
     width: 80,
     height: 50,
   },
