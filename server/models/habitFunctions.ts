@@ -14,7 +14,6 @@ async function getHabitsByDate(id: number, date: string) {
 }
 
 async function filterHabits(habits: any, date: any) {
-  console.log(2)
   const data = await habits.filter((habit: any) => {
       if (!habit.deletedAt) return true;
     return habit.deletedAt.valueOf() > new Date(date).valueOf();

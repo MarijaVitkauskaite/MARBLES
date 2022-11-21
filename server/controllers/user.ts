@@ -19,7 +19,6 @@ const registerUser = async (req: any, res: any) => {
 
 const loginUser = async (req: any, res: any) => {
   const { email, id } = req.body;
-  console.log(email)
   try {
     const emailExists = await doesEmailExist(email);
     const isidright = emailExists.id === id;
