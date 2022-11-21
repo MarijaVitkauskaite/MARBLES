@@ -9,7 +9,7 @@ const registerUser = async (req: any, res: any) => {
     } else {
       const user = await createUser(email, id);
       res.status(201);
-      res.body({ user: user });
+      res.send(user);
     }
   } catch (error) {
     res.status(500);
@@ -18,16 +18,17 @@ const registerUser = async (req: any, res: any) => {
 };
 
 const loginUser = async (req: any, res: any) => {
-  const { email, id } = req.header;
+  const { email, id } = req.body;
+  console.log(email)
   try {
     const emailExists = await doesEmailExist(email);
     const isidright = emailExists.id === id;
     if (emailExists && isidright) {
       res.status(201);
-      res.body({ status: 'success' });
+      res.send('success');
     } else {
       res.status(200);
-      res.body({ status: 'Please register' });
+      res.send('Please register');
     }
   } catch (error) {
     res.status(500);

@@ -4,6 +4,11 @@ module.exports = (connection: any, DataTypes: any) => {
         type: DataTypes.STRING,
         allowNull: false
     },
+    id: {
+      type: DataTypes.STRING,
+      allowNull: false, 
+      primaryKey: true,
+    },
     deletedAt: {
         type: DataTypes.DATE,
         default: null

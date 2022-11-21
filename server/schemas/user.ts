@@ -1,5 +1,5 @@
 module.exports = (connection: any, DataTypes: any) => {
-  const user = connection.define('User', {
+  const user = connection.define('user', {
      id: {
       type: DataTypes.STRING,
       primaryKey: true,
