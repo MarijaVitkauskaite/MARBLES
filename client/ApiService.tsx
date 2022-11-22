@@ -31,15 +31,14 @@ export const login = async (user: User) => {
   }
 };
 
-export const sendHabits = async (habits: string) => {
-  // TODO NEED TO RETURN UPDATED USER FROM BACKEND
+export const sendHabits = async (habit: string, userId : string) => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({habits}),
+      body: JSON.stringify({habit , userId}),
     });
     return await res.json();
   } catch (err) {
@@ -48,7 +47,6 @@ export const sendHabits = async (habits: string) => {
 };
 
 export const getHabits = async (selectedDate) => {
-  // TODO NOT IN USE?
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
       method: 'PUT',
@@ -63,15 +61,13 @@ export const getHabits = async (selectedDate) => {
   }
 };
 
-export const deleteHabits = async (habit: Habit, selectedDate) => {
-    // TODO NEED TO RETURN UPDATED USER FROM BACKEND after habits has been deleted
+export const deleteHabits = async (id : string) => {
   try {
-    const res = await fetch(`${REACT_APP_LOCAL_IP}/habits/delete/${habit.id}`, {
+    const res = await fetch(`${REACT_APP_LOCAL_IP}/habits/delete/${id}`, {
       method: 'DELETE',
       credentials: 'include',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ selectedDate }),
     });
     return await res.json();
   } catch (err) {
@@ -79,11 +75,9 @@ export const deleteHabits = async (habit: Habit, selectedDate) => {
   }
 };
 
-export const completeHabits = async (habit: Habit, selectedDate) => {
-    // TODO NEED TO RETURN UPDATED USER FROM BACKEND and add  selectedDate to complete
-
+export const completeHabits = async (id: string, selectedDate : Date) => {
   try {
-    const res = await fetch(`${REACT_APP_LOCAL_IP}/habits/complete/${habit.id}`, {
+    const res = await fetch(`${REACT_APP_LOCAL_IP}/habits/complete/${id}`, {
       method: 'PUT',
       credentials: 'include',
       mode: 'cors',

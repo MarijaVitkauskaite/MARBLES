@@ -16,7 +16,7 @@ export default function Habits({ habit, selectedDate }) {
   const handleCheck = async (habit: Habit) => {
     try {
       setCheck(true);
-      const updatedUser = await apiService.completeHabits(habit, selectedDate);
+      const updatedUser = await apiService.completeHabits(habit.id,selectedDate);
       setUser(updatedUser)
     } catch (e) {
      console.log(e)

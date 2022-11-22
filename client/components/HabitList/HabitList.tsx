@@ -11,9 +11,9 @@ export default function HabitList({ selectedDate }) {
   const {user ,setUser} = useContext(userContext)
   const {habits} = user;
 
-  const handleDelete = async (habit: Habit) => {
+  const handleDelete = async (habit_id:string) => {
     try {
-      const updatedUser = await apiService.deleteHabits(habit, selectedDate);
+      const updatedUser = await apiService.deleteHabits(habit_id);
      setUser(updatedUser)
     } catch (e) {
       console.log(e)
@@ -24,7 +24,7 @@ export default function HabitList({ selectedDate }) {
       {habits &&
         habits.map((habit: Habit) => {
           return (
-            <Pressable onLongPress={() => handleDelete(habit)} key={habit.id} testID={`habit${habit.id}`}>
+            <Pressable onLongPress={() => handleDelete(habit.id)} key={habit.id} testID={`habit${habit.id}`}>
               <HabitItem habit={habit} selectedDate={selectedDate} key={habit.id} />
             </Pressable>
           );
