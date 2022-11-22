@@ -12,7 +12,11 @@ const box: any = {};
 box.user = require('./user')(connection, Sequelize.DataTypes);
 box.habit = require('./habit')(connection, Sequelize.DataTypes);
 
-box.user.hasMany(box.habit); 
+
+box.user.hasMany(box.habit, {
+  foreignKey: 'userId'
+});
+
 
 box.connection = connection;
 

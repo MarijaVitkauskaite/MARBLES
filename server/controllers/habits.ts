@@ -1,59 +1,54 @@
-import { getHabits, createHabit, getHabitsByDate, filterHabits, delHabits, completeHabit } from '../models/habitFunctions'
+import { getHabits, createHabit, delHabits, completeHabit, getid } from '../models/habitFunctions'
+const {getuser} = require('../models/userFunctions');
 
 // TODO refactor in controller and model different files && refactor to real db search
-// TODO CHECK RETURN STATUSES
+//  TODO CHECK RETURN STATUSES
 
 const saveHabits = async (req: any, res: any) => {
-  const habit = req.body.habit;
-  const habitWithUser = { habit, id: req.body.id, completed: [] };
+  const habitWithUser = { habit: req.body.habit,  userId: req.body.user_id, completed: [] };
   try {
-    const countHabits = await getHabits(req.body.id);
-    if (countHabits.length < 5) {
-      const createdHabit = await createHabit(habitWithUser);
-      res.status(201);
-      res.send(createdHabit);
-    } else {
-      res.status(200)
-      res.send('Too many habits');
-    }
+    const createdHabit = await createHabit(habitWithUser);
+    res.status(201);
+    const habitt = await getHabits(req.body.user_id)
+    const user = await getuser(req.body.user_id)
+    const data = { ...user , habitt}
+    res.send(data);
   } catch (error) {
     res.status(500);
     console.log('error in saveHabits: ', error);
   }
-};
-
-const showHabits = async (req: any, res: any) => {
-  try {
-    const findHabits = await getHabitsByDate(req.body.id, req.body.selectedDate)
-    new Date(req.body.selectedDate);
-    const filteredHabits = await filterHabits(findHabits, req.body.selectedDate)
-    res.send(filteredHabits);
-  } catch (error) {
-    res.status(500);
-    console.log('error in showHabits: ', error);
-  }
-};
+}; //return user with array of habits
 
 const deleteHabits = async (req: any, res: any) => {
   try {
     const { id } = req.params;
-    await delHabits(req.body.selectedDate, id);
-    res.send('Removed');
+    await delHabits(id);
+    const item = await getid(id)
+    const habitt = await getHabits(item.userId)
+    const user = await getuser(item.userId)
+    const data = { ...user , habitt}
+    res.status(201);
+    res.send(data);
   } catch (error) {
     res.status(500);
     console.log('error in deleteHabits: ', error);
   }
-};
+};//return user with array of habits
 
 const completeHabits = async (req: any, res: any) => {
   try {
     const { id } = req.params;
     await completeHabit(id, req.body.selectedDate)
-    res.send('Completed');
+    const item = await getid(id)
+    const habitt = await getHabits(item.userId)
+    const user = await getuser(item.userId)
+    const data = { ...user , habitt}
+    res.status(201);
+    res.send(data);
   } catch (error) {
     res.status(500);
     console.log('error in completeHabits: ', error);
   }
-};
+};//return user with array of habits
 
-module.exports = { saveHabits, showHabits, deleteHabits, completeHabits };
+module.exports = { saveHabits, deleteHabits, completeHabits };
