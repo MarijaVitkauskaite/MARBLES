@@ -15,15 +15,15 @@ export const register = async (user: User) => {
     });
     return await res.json();
   } catch (err) {
-     console.log(err);
-     return "Something went wrong!"
+    console.log(err);
+    return "Something went wrong!"
   }
 };
 
 export const login = async (user: User) => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/login`, {
-      method: 'GET',
+      method: 'PUT',
       credentials: 'include',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
@@ -31,25 +31,25 @@ export const login = async (user: User) => {
     });
     return await res.json();
   } catch (err) {
-     console.log(err);
-     return "Something went wrong!"
+    console.log(err);
+    return "Something went wrong!"
 
   }
 };
 
-export const sendHabits = async (habit: string, userId : string) => {
+export const sendHabits = async (habit: string, userId: string) => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({habit , userId}),
+      body: JSON.stringify({ habit, userId }),
     });
     return await res.json();
   } catch (err) {
-     console.log(err);
-     return "Something went wrong!"
+    console.log(err);
+    return "Something went wrong!"
 
   }
 };
@@ -69,7 +69,7 @@ export const sendHabits = async (habit: string, userId : string) => {
 //   }
 // };
 
-export const deleteHabits = async (id : string) => {
+export const deleteHabits = async (id: string) => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits/delete/${id}`, {
       method: 'DELETE',
@@ -83,7 +83,7 @@ export const deleteHabits = async (id : string) => {
   }
 };
 
-export const completeHabits = async (id: string, selectedDate : Date) => {
+export const completeHabits = async (id: string, selectedDate: Date) => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits/complete/${id}`, {
       method: 'PUT',
@@ -94,8 +94,8 @@ export const completeHabits = async (id: string, selectedDate : Date) => {
     });
     return await res.text();
   } catch (err) {
-     console.log(err);
-     return "Something went wrong!"
+    console.log(err);
+    return "Something went wrong!"
 
   }
 };

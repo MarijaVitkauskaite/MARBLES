@@ -1,4 +1,4 @@
-const {createUser, doesEmailExist, getuser} = require('../models/userFunctions');
+const { createUser, doesEmailExist, getuser } = require('../models/userFunctions');
 import { getHabits } from '../models/habitFunctions'
 
 const registerUser = async (req: any, res: any) => {
@@ -7,7 +7,7 @@ const registerUser = async (req: any, res: any) => {
     const emailExists = await doesEmailExist(email);
     if (emailExists) {
       res.status(200)
-        res.send('send back user');
+      res.send('send back user');
     } else {
       const user = await createUser(email, id);
       res.status(201);
@@ -23,11 +23,10 @@ const loginUser = async (req: any, res: any) => {
   const { email, id } = req.body;
   try {
     const emailExists = await doesEmailExist(email);
-    const isidright = emailExists.userId === id;
-    if (emailExists && isidright) {
+    if (emailExists) {
       const habits = await getHabits(id)
       const user = await getuser(id)
-      const data = { ...user , habits}
+      const data = { ...user, habits }
       res.status(201);
       res.send(data);
     } else {

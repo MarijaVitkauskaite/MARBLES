@@ -17,7 +17,7 @@ export default function Login({ navigation }) {
   const emailInput = useRef<any>();
   const passwordInput = useRef<any>();
 
-  const [ user, setUser  ]= useContext(userContext);
+  const [user, setUser] = useContext<any>(userContext);
 
   const handleSubmit = async () => {
     if (!email) {
@@ -28,24 +28,22 @@ export default function Login({ navigation }) {
       Alert.alert('Please enter password');
       return;
     }
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password)
+      const firebaseUser = userCredential.user;
+      //should make APIcall, get the user obj with habits in it
+      const updatedUser = await apiService.login({ id: firebaseUser.uid, email: email, habits: [] })
+      setUser(updatedUser)
+      navigation.replace('Habits');
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const firebaseUser = userCredential.user;
-        if (firebaseUser) {
-          //should make APIcall, get the user obj with habits in it
-          //setuser(returnedUser)
-          navigation.replace('Habits');
+    } catch (error) {
+      Alert.alert(error.message.slice(9))
+      emailInput.current.clear();
+      passwordInput.current.clear();
+    }
 
-        }
-      })
-      .catch((error) => {
-        Alert.alert(error.message.slice(9))
-        emailInput.current.clear();
-        passwordInput.current.clear();
-      });
-  };
+
+  }
 
   return (
     <SafeAreaView style={styles.container}>

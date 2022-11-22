@@ -14,7 +14,7 @@ export default function Register({ navigation }) {
   const emailInput = useRef<any>();
   const passwordInput = useRef<any>();
 
-  const [ user, setUser] = useContext(userContext);
+  const [user, setUser] = useContext<any>(userContext);
 
 
   const handleSubmit = async () => {
@@ -29,21 +29,20 @@ export default function Register({ navigation }) {
       Alert.alert('Please enter password');
       return;
     }
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const firebaseUser = userCredential.user;
-        if (firebaseUser) {
-          apiService.register({ id: user.uid, email: email, habits: [] }).then(res => setUser(res)).catch((error) => { console.log(error) })
-        }
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      const firebaseUser = userCredential.user;
+      //should make APIcall, get the user obj with habits in it
+      const updatedUser = await apiService.register({ id: firebaseUser.uid, email: email, habits: [] })
+      setUser(updatedUser)
+      navigation.replace('Habits');
 
-      })
-      .catch((error) => {
-        Alert.alert(error.message.slice(9))
-        emailInput.current.clear();
-        passwordInput.current.clear();
+    } catch (error) {
+      Alert.alert(error.message.slice(9))
+      emailInput.current.clear();
+      passwordInput.current.clear();
+    }
 
-      });
   }
 
   return (
