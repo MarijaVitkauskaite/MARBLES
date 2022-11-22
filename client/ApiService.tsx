@@ -19,7 +19,7 @@ export const register = async (user: User) => {
 export const login = async (user: User) => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/login`, {
-      method: 'POST',
+      method: 'GET',
       credentials: 'include',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
@@ -65,7 +65,6 @@ export const getHabits = async (selectedDate) => {
 
 export const deleteHabits = async (habit: Habit, selectedDate) => {
     // TODO NEED TO RETURN UPDATED USER FROM BACKEND after habits has been deleted
-
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits/delete/${habit.id}`, {
       method: 'DELETE',
