@@ -1,24 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Image, Text, Pressable, View, Alert } from 'react-native';
 import { Habit } from '../../../lib/api-intefaces';
 import * as apiService from '../../ApiService';
+import { userContext } from '../../user-context';
 import styles from './style';
 
-export default function Habits({ habitName, selectedDate, getHabits }) {
+export default function Habits({ habit, selectedDate }) {
   const [check, setCheck] = useState<boolean>();
+  const {setUser} = useContext(userContext)
 
   useEffect(() => {
-    setCheck(habitName.completed.some((dateStr: string) => dateStr === selectedDate.toISOString()));
-  }, [habitName]);
+    setCheck(habit.completed.some((date: string) => date === selectedDate.toISOString()));
+  }, [habit]);
 
-  const handleCheck = async (habitName: Habit) => {
+  const handleCheck = async (habit: Habit) => {
     try {
       setCheck(true);
-      await apiService.completeHabits(habitName, selectedDate);
+      const updatedUser = await apiService.completeHabits(habit, selectedDate);
+      setUser(updatedUser)
     } catch (e) {
-      Alert.alert('Soemthing went wrong');
+     console.log(e)
     }
-    getHabits();
   };
 
   return (
@@ -28,11 +30,11 @@ export default function Habits({ habitName, selectedDate, getHabits }) {
           <Image testID="img" style={styles.tick} source={require('../../assets/TickDone.png')} />
         </Pressable>
       ) : (
-        <Pressable onPress={() => handleCheck(habitName)}>
+        <Pressable onPress={() => handleCheck(habit)}>
           <Image testID="img" style={styles.tick} source={require('../../assets/Tick.png')} />
         </Pressable>
       )}
-      <Text style={styles.text}>{habitName.habit}</Text>
+      <Text style={styles.text}>{habit.habit}</Text>
     </View>
   );
 }
