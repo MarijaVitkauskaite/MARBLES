@@ -23,9 +23,10 @@ function makePassword() {
     return result;
 }
 
+
 describe('habit tests', () => {
 
-it('should create a new habit', async () => {
+  it('should create a new habit', async () => {
   const habit = makeletteredString();
   const email = makeletteredString()
   const id = makeletteredString()
@@ -33,7 +34,7 @@ it('should create a new habit', async () => {
       .send({
         email: email,
         id: id,
-      })
+      });
     const res = await request.post('/habits')
       .send({
         habit: habit,
@@ -48,8 +49,6 @@ it('should display habits', async () => {
   const habit = makeletteredString();
   const email = makeletteredString();
   const id = makeletteredString()
-
-  const password = makePassword()
   
     await request.post('/register')
       .send({
@@ -116,7 +115,7 @@ it('should complete habits', async () => {
         id: id
       })
   
-    const res = await request.complete(`/delete/${id}`)
+    const res = await request.put(`/delete/${id}`)
        .send({
         date: date
       })

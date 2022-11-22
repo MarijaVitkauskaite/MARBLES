@@ -10,19 +10,10 @@ app.use(express.json());
 app.use(router);
 
 (async () => {
-   await box.connection.sync(); // synchronize all models
+   const obj = {
+      force: true
+   }
+   await box.connection.sync(obj); // synchronize all models
 })()
 
-// async function listen () {
-//    try {
-//     app.listen(3000, () => {
-//        console.log('Hello from SERVER');
-//     });
-//   } catch (error) {
-//     console.log('error in SERVER: ', error);
-//   }
-// };
-
-
-// export {app, listen}
 module.exports = app

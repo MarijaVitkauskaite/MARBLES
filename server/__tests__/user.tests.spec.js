@@ -45,7 +45,7 @@ describe('user tests', () => {
         email: email,
         id: id,
       })
-    const res = request.post('/login')
+    const res = await request.get('/login')
       .send({
         email: email,
         id: id,

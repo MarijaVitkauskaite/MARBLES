@@ -1,17 +1,12 @@
 module.exports = (connection: any, DataTypes: any) => {
-  const habit = connection.define('Habit', {
+  const habit = connection.define('habit', {
     habit: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    id: {
       type: DataTypes.STRING,
-      allowNull: false, 
-      primaryKey: true,
+      allowNull: false
     },
     deletedAt: {
-        type: DataTypes.DATE,
-        default: null
+      type: DataTypes.DATE,
+      default: null
     },
     completed: {
       type: DataTypes.ARRAY(DataTypes.DATE),
