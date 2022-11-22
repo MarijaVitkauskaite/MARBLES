@@ -46,20 +46,20 @@ export const sendHabits = async (habit: string, userId : string) => {
   }
 };
 
-export const getHabits = async (selectedDate) => {
-  try {
-    const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
-      method: 'PUT',
-      credentials: 'include',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ selectedDate }),
-    });
-    return await res.json();
-  } catch (err) {
-    return console.log(err);
-  }
-};
+// export const getHabits = async (selectedDate) => {
+//   try {
+//     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
+//       method: 'PUT',
+//       credentials: 'include',
+//       mode: 'cors',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({ selectedDate }),
+//     });
+//     return await res.json();
+//   } catch (err) {
+//     return console.log(err);
+//   }
+// };
 
 export const deleteHabits = async (id : string) => {
   try {
