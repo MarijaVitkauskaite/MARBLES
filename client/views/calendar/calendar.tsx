@@ -19,7 +19,7 @@ export default function CalendarScroll({ navigation }) {
         onDayPress={(day) => {
           setSelectedDay(day.dateString);
         }}
-        onDayLongPress={(day) => {
+        onDayLongPress={() => {
           navigation.replace('AddHabit');
         }}
         theme={calendarStyle}

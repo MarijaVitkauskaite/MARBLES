@@ -12,8 +12,7 @@ export default function AddHabit({ navigation, testfn }) {
       Alert.alert('Please enter a habit');
     } else {
       testfn()
-      // TODO CHANGE API TO STRING VALUE
-      const updatedUser = await apiService.sendHabits({ habit });
+      const updatedUser = await apiService.sendHabits( habit );
       setUser(updatedUser)
       navigation.replace('Habits');
     }

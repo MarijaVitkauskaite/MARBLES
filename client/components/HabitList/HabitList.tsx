@@ -13,7 +13,6 @@ export default function HabitList({ selectedDate }) {
 
   const handleDelete = async (habit: Habit) => {
     try {
-     //TODO MODIFY API TO DELETE THE HABIT AND RETURN UPDATED USER
       const updatedUser = await apiService.deleteHabits(habit, selectedDate);
      setUser(updatedUser)
     } catch (e) {
