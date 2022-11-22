@@ -1,14 +1,21 @@
+import { useContext } from 'react';
 import { Pressable, View } from 'react-native';
 import { Habit } from '../../../lib/api-intefaces';
 import * as apiService from '../../ApiService';
+import { userContext } from '../../user-context';
 import HabitItem from '../HabitItem/HabitItem';
 import styles from './style'
 
-export default function HabitList({ habits, selectedDate, getHabits }) {
-  const handleDelete = async (habitName: Habit) => {
+export default function HabitList({ selectedDate }) {
+
+  const {user ,setUser} = useContext(userContext)
+  const {habits} = user;
+
+  const handleDelete = async (habit: Habit) => {
     try {
-      await apiService.deleteHabits(habitName, selectedDate);
-      getHabits();
+     //TODO MODIFY API TO DELETE THE HABIT AND RETURN UPDATED USER
+      const updatedUser = await apiService.deleteHabits(habit, selectedDate);
+     setUser(updatedUser)
     } catch (e) {
       console.log(e)
     }
@@ -16,10 +23,10 @@ export default function HabitList({ habits, selectedDate, getHabits }) {
   return (
     <View style={styles.container} testID="container">
       {habits &&
-        habits.map((habitName: Habit) => {
+        habits.map((habit: Habit) => {
           return (
-            <Pressable onLongPress={() => handleDelete(habitName)} key={habitName.id} testID={`habit${habitName.id}`}>
-              <HabitItem habitName={habitName} selectedDate={selectedDate} getHabits={getHabits} key={habitName.id} />
+            <Pressable onLongPress={() => handleDelete(habit)} key={habit.id} testID={`habit${habit.id}`}>
+              <HabitItem habit={habit} selectedDate={selectedDate} key={habit.id} />
             </Pressable>
           );
         })}

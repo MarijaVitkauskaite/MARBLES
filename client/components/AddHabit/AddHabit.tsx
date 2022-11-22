@@ -1,20 +1,20 @@
 import { SafeAreaView, Image, View, TextInput, Pressable, Alert } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as apiService from '../../ApiService';
 import styles from './style'
+import { userContext } from '../../user-context';
 export default function AddHabit({ navigation, testfn }) {
   const [habit, setHabit] = useState<string>('');
-
+  const {setUser} = useContext(userContext)
 
   const handleSubmit = async () => {
     if (habit === '') {
       Alert.alert('Please enter a habit');
     } else {
       testfn()
-      const newHabit = await apiService.sendHabits({ habit });
-      if (newHabit === 'Too many habits') {
-        Alert.alert('Too many habits');
-      }
+      // TODO CHANGE API TO STRING VALUE
+      const updatedUser = await apiService.sendHabits({ habit });
+      setUser(updatedUser)
       navigation.replace('Habits');
     }
   };
