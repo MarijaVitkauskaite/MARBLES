@@ -5,7 +5,8 @@ const registerUser = async (req: any, res: any) => {
   try {
     const emailExists = await doesEmailExist(email);
     if (emailExists) {
-      res.status(200).body({ status: 'send back user' });
+      res.status(200)
+        res.send('send back user');
     } else {
       const user = await createUser(email, id);
       res.status(201);

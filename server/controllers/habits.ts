@@ -27,6 +27,7 @@ const showHabits = async (req: any, res: any) => {
     const findHabits = await getHabitsByDate(req.body.id, req.body.selectedDate)
     new Date(req.body.selectedDate);
     const filteredHabits = await filterHabits(findHabits, req.body.selectedDate)
+    res.status(201);
     res.send(filteredHabits);
   } catch (error) {
     res.status(500);
@@ -38,6 +39,7 @@ const deleteHabits = async (req: any, res: any) => {
   try {
     const { id } = req.params;
     await delHabits(req.body.selectedDate, id);
+    res.status(201);
     res.send('Removed');
   } catch (error) {
     res.status(500);
@@ -49,6 +51,7 @@ const completeHabits = async (req: any, res: any) => {
   try {
     const { id } = req.params;
     await completeHabit(id, req.body.selectedDate)
+    res.status(201);
     res.send('Completed');
   } catch (error) {
     res.status(500);
