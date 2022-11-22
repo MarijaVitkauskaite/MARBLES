@@ -1,6 +1,5 @@
 const supertest = require('supertest')
-const app = require('../index.ts');
-
+const app = require('../app') 
 const request = supertest(app)
 
 
@@ -28,17 +27,17 @@ describe('habit tests', () => {
 
 it('should create a new habit', async () => {
   const habit = makeletteredString();
-  const password = makePassword()
-      const email = makeletteredString();
-
+  const email = makeletteredString()
+  const id = makeletteredString()
     await request.post('/register')
       .send({
         email: email,
-        password: password,
+        id: id,
       })
     const res = await request.post('/habits')
       .send({
         habit: habit,
+        id: id
       })
     expect(res.statusCode).toEqual(201)
   })
@@ -47,27 +46,30 @@ it('should display habits', async () => {
   let date = Date.now()
   JSON.stringify(date)
   const habit = makeletteredString();
-      const email = makeletteredString();
+  const email = makeletteredString();
+  const id = makeletteredString()
 
   const password = makePassword()
   
     await request.post('/register')
       .send({
         email: email,
-        password: password,
+        id: id,
       })
   
-    await request.put('/habits')
+    await request.post('/habits')
       .send({
-      habit: habit,
+        habit: habit,
+        id: id
       })
   
-    const res = await request.post('/habits')
+    const res = await request.get('/habits')
       .send({
         date: date,
+        id: id
       })
   
-  expect(res.body).toEqual({habit: 'habit'})
+    expect(res.statusCode).toEqual(201)
 })
   
 it('should delete habits', async () => {
@@ -75,49 +77,50 @@ it('should delete habits', async () => {
   JSON.stringify(date)
   const habit = makeletteredString();
     const email = makeletteredString();
-   const password = makePassword()
+   const id = makeletteredString()
     await request.post('/register')
       .send({
         email: email,
-        password: password,
+        id: id,
       })
   
-    await request.put('/habits')
+    await request.post('/habits')
       .send({
-      habit: habit,
+        habit: habit,
+        id: id
       })
   
-    const res = await request.post('/habits')
+    const res = await request.delete(`/delete/${id}`)
       .send({
-        date: date,
+        date: date
       })
   
-  expect(res.body).toEqual({removed: 'removed'})
+    expect(res.statusCode).toEqual(201)
 })  
   
 it('should complete habits', async () => {
-  let date = Date.now()
+   let date = Date.now()
   JSON.stringify(date)
   const habit = makeletteredString();
     const email = makeletteredString();
-   const password = makePassword()
+   const id = makeletteredString()
     await request.post('/register')
       .send({
         email: email,
-        password: password,
+        id: id,
       })
   
-    await request.put('/habits')
+    await request.post('/habits')
       .send({
-      habit: habit,
+        habit: habit,
+        id: id
       })
   
-    const res = await request.post('/habits')
-      .send({
-        date: date,
+    const res = await request.complete(`/delete/${id}`)
+       .send({
+        date: date
       })
-  
-  expect(res.body).toEqual({removed: 'removed'})
+    expect(res.statusCode).toEqual(201)
 })    
   
   
