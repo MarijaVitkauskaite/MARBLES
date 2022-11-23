@@ -25,7 +25,7 @@ export default StyleSheet.create({
     },
     textInput: {
         flex: 1,
-        alignItems: 'stretch',
+        textAlign: 'center',
         width: '80%'
     },
     button: {
