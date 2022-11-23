@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const router = require('./router');
-import { box } from './schemas/index';
+import { DB } from './schemas/databaseConnection';
 
 const app = express();
 app.use(cors());
@@ -19,7 +19,7 @@ async function listen() {
 }
 (async () => {
   await listen();
-  await box.connection.sync(); // synchronize all models
+  await DB.connection.sync(); // synchronize all models
 })();
 
 module.exports = app;
