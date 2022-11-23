@@ -26,6 +26,7 @@ export default StyleSheet.create({
     textInput: {
         flex: 1,
         alignItems: 'stretch',
+        width: '80%'
     },
     button: {
         bottom: '-20%',
