@@ -11,15 +11,16 @@ export default function Habits({ habit, selectedDate }) {
 
   useEffect(() => {
     setCheck(habit?.completed.some((date: string) => date === selectedDate.toISOString()));
-  }, [habit]);
+  }, [habit, selectedDate]);
 
   const handleCheck = async (habit: Habit) => {
     try {
+
       setCheck(true);
-      const updatedUser = await apiService.completeHabits(habit.id,selectedDate);
+      const updatedUser = await apiService.completeHabits(habit.id, selectedDate);
       setUser(updatedUser)
     } catch (e) {
-     console.log(e)
+      console.log(e)
     }
   };
 

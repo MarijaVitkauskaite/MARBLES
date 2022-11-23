@@ -1,14 +1,14 @@
 import { useMemo, useRef } from 'react';
 import { ScrollView, SafeAreaView, View } from 'react-native';
-import { generateHorizontalCalendarDates} from './utils'
+import { generateHorizontalCalendarDates } from './utils'
 import CalendarItem from '../CalendarItem/CalendarItem';
 import CalendarHeader from '../CalendarHeader/CalendarHeader';
 
 export default function HorizontalCalendar({ selectedDate, setSelectedDate, navigation, today }) {
   const datePast = 180;
   const dateFuture = 90;
-  const scroller = useRef<HTMLInputElement>();
-  const options:ScrollToOptions = { top: datePast * 78.65, left: 0 }
+  const scroller = useRef();
+  const options = { x: datePast * 78.65, y: 0 }
   const dates = useMemo(() => {
     return generateHorizontalCalendarDates(datePast, dateFuture);
   }, []);
