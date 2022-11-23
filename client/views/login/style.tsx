@@ -29,7 +29,8 @@ export default StyleSheet.create({
     },
     TextInput: {
         flex: 1,
-        alignItems: 'stretch',
+        textAlign: 'center',
+        width: '80%',
     },
     button: {
         bottom: '-20%',

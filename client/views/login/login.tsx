@@ -42,8 +42,6 @@ export default function Login({ navigation }) {
 
     } catch (error) {
       Alert.alert(error.message.slice(9))
-      emailInput.current.clear();
-      passwordInput.current.clear();
     }
 
 
