@@ -18,8 +18,7 @@ export default function Register({ navigation }) {
 
 
   const handleSubmit = async () => {
-    console.log(user)
-    console.log(setUser)
+
 
     if (!email) {
       Alert.alert('Please enter email address');
@@ -33,7 +32,7 @@ export default function Register({ navigation }) {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       const firebaseUser = userCredential.user;
       //should make APIcall, get the user obj with habits in it
-      const updatedUser = await apiService.register({ id: firebaseUser.uid, email: email, habits: [] })
+      const updatedUser = await apiService.register({ userId: firebaseUser.uid, email: email, habits: [] })
       setUser(updatedUser)
       navigation.replace('Habits');
 

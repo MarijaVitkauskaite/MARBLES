@@ -3,10 +3,11 @@ export interface Habit {
   habit: string;
   deletedAt: Date;
   completed: Date[];
+  userId: string;
 }
 
 export interface User {
-  email: String;
-  id: string;
+  email: string;
+  userId: string;
   habits: Habit[];
 }

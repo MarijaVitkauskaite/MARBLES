@@ -2,11 +2,11 @@ import { Pressable, View, Image } from 'react-native';
 import { auth } from '../../firebaseConfig'
 import { signOut } from "firebase/auth";
 import styles from './style'
-export default function BottomNav({ navigation , testFn }) {
+export default function BottomNav({ navigation }) {
 
 
-  const handleLogout =  () => {
-    testFn()
+  const handleLogout = () => {
+
     signOut(auth).then(() => {
       navigation.replace('Login')
     }).catch((error) => {

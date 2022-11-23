@@ -26,7 +26,7 @@ export default function Habits({ navigation }) {
       <HabitList
         selectedDate={selectedDate}
       />
-      <BottomNav navigation={navigation} testFn={()=>{}}/>
+      <BottomNav navigation={navigation} />
     </SafeAreaView>
   );
 }

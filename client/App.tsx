@@ -29,7 +29,7 @@ function MyStack() {
 
 export default function App() {
 
-  const user= useState<User>({ id: "", email: "", habits: [] });
+  const user = useState<User>({ userId: "", email: "", habits: [] });
   return (
     <NavigationContainer>
       <userContext.Provider value={user} >

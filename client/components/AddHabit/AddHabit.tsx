@@ -3,18 +3,18 @@ import React, { useContext, useState } from 'react';
 import * as apiService from '../../ApiService';
 import styles from './style'
 import { userContext } from '../../user-context';
-export default function AddHabit({ navigation, testfn }) {
+export default function AddHabit({ navigation }) {
   const [habit, setHabit] = useState<string>('');
-  const [user, setUser] = useContext(userContext)
+  const [user, setUser] = useContext<any>(userContext)
 
   const handleSubmit = async () => {
-    navigation.replace('Habits');
+
     if (habit === '') {
       Alert.alert('Please enter a habit');
     } else {
-      testfn()
-      const updatedUser = await apiService.sendHabits(habit, user.id);
+      const updatedUser = await apiService.sendHabits(habit, user.userId);
       setUser(updatedUser)
+      navigation.replace('Habits');
 
     }
   };

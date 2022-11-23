@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 import styles from './style';
 import { userContext } from '../../user-context';
+import { User } from '../../../lib/api-intefaces';
 
 
 // // TODO: Replace the following with your app's Firebase project configuration
@@ -32,8 +33,11 @@ export default function Login({ navigation }) {
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       const firebaseUser = userCredential.user;
       //should make APIcall, get the user obj with habits in it
-      const updatedUser = await apiService.login({ id: firebaseUser.uid, email: email, habits: [] })
+      // console.log({ userId: firebaseUser.uid, email: email, habits: [] })
+      const updatedUser = await apiService.login({ userId: firebaseUser.uid, email: email, habits: [] })
+      // console.log(updatedUser, "updatedUser")
       setUser(updatedUser)
+      // console.log(user, "aftersetUser")
       navigation.replace('Habits');
 
     } catch (error) {

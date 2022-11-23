@@ -4,7 +4,7 @@ import { User, Habit } from '../lib/api-intefaces'
 
 
 
-export const register = async (user: User) => {
+export const register = async (user: User): Promise<User> => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/register`, {
       method: 'POST',
@@ -16,11 +16,10 @@ export const register = async (user: User) => {
     return await res.json();
   } catch (err) {
     console.log(err);
-    return "Something went wrong!"
   }
 };
 
-export const login = async (user: User) => {
+export const login = async (user: User): Promise<User> => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/login`, {
       method: 'PUT',
@@ -32,12 +31,10 @@ export const login = async (user: User) => {
     return await res.json();
   } catch (err) {
     console.log(err);
-    return "Something went wrong!"
-
   }
 };
 
-export const sendHabits = async (habit: string, userId: string) => {
+export const sendHabits = async (habit: string, userId: string): Promise<User> => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
       method: 'POST',
@@ -49,8 +46,6 @@ export const sendHabits = async (habit: string, userId: string) => {
     return await res.json();
   } catch (err) {
     console.log(err);
-    return "Something went wrong!"
-
   }
 };
 
@@ -69,7 +64,7 @@ export const sendHabits = async (habit: string, userId: string) => {
 //   }
 // };
 
-export const deleteHabits = async (id: string) => {
+export const deleteHabits = async (id: string): Promise<User> => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits/delete/${id}`, {
       method: 'DELETE',
@@ -79,11 +74,11 @@ export const deleteHabits = async (id: string) => {
     });
     return await res.json();
   } catch (err) {
-    return console.log(err);
+    console.log(err);
   }
 };
 
-export const completeHabits = async (id: string, selectedDate: Date) => {
+export const completeHabits = async (id: string, selectedDate: Date): Promise<User> => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits/complete/${id}`, {
       method: 'PUT',
@@ -92,11 +87,9 @@ export const completeHabits = async (id: string, selectedDate: Date) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ selectedDate }),
     });
-    return await res.text();
+    return await res.json();
   } catch (err) {
     console.log(err);
-    return "Something went wrong!"
-
   }
 };
 

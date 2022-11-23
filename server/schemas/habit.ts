@@ -12,6 +12,10 @@ module.exports = (connection: any, DataTypes: any) => {
       type: DataTypes.ARRAY(DataTypes.DATE),
       default: [],
       allowNull: false
+    },
+    userId: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   })
   return habit
