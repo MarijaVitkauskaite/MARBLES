@@ -1,32 +1,32 @@
-import { getHabits, createHabit, delHabits, completeHabit, getid } from '../models/habitFunctions'
-const { getuser } = require('../models/userFunctions');
+import { getHabits, createHabit, deleteHabit, completeHabit, getHabitById } from '../models/habit';
+import { getUser } from '../models/user';
+import express = require('express');
 
-// TODO refactor in controller and model different files && refactor to real db search
-//  TODO CHECK RETURN STATUSES
-
-const saveHabits = async (req: any, res: any) => {
+const saveHabits = async (req: express.Request, res: express.Response) => {
   const habitWithUser = { habit: req.body.habit, userId: req.body.userId, completed: [] };
   try {
     const createdHabit = await createHabit(habitWithUser);
+    const [habits, user] = await Promise.all([
+      getHabits(req.body.userId),
+      getUser(req.body.userId),
+    ]);
+
+    const data = { ...user.dataValues, habits };
     res.status(201);
-    const habits = await getHabits(req.body.userId)
-    const user = await getuser(req.body.userId)
-    const data = { ...user.dataValues, habits }
     res.send(data);
   } catch (error) {
     res.status(500);
   }
-}; //return user with array of habits
+};
 
-const deleteHabits = async (req: any, res: any) => {
+const deleteHabits = async (req: express.Request, res: express.Response) => {
   try {
-
     const { id } = req.params;
-    const item = await getid(id)
-    await delHabits(id);
-    const habits = await getHabits(item.dataValues.userId)
-    const user = await getuser(item.dataValues.userId)
-    const data = { ...user.dataValues, habits }
+    const item = await getHabitById(id);
+    await deleteHabit(id);
+    const [habits, user] = await Promise.all([getHabits(item.userId), getUser(item.userId)]);
+
+    const data = { ...user.dataValues, habits };
 
     res.status(201);
     res.send(data);
@@ -34,16 +34,15 @@ const deleteHabits = async (req: any, res: any) => {
     res.status(500);
     console.log('error in deleteHabits: ', error);
   }
-};//return user with array of habits
+};
 
-const completeHabits = async (req: any, res: any) => {
+const completeHabits = async (req: express.Request, res: express.Response) => {
   try {
     const { id } = req.params;
-    await completeHabit(id, req.body.selectedDate)
-    const item = await getid(id)
-    const habits = await getHabits(item.userId)
-    const user = await getuser(item.userId)
-    const data = { ...user.dataValues, habits }
+    await completeHabit(id, req.body.selectedDate);
+    const item = await getHabitById(id);
+    const [habits, user] = await Promise.all([getHabits(item.userId), getUser(item.userId)]);
+    const data = { ...user.dataValues, habits };
 
     res.status(201);
     res.send(data);
@@ -51,6 +50,6 @@ const completeHabits = async (req: any, res: any) => {
     res.status(500);
     console.log('error in completeHabits: ', error);
   }
-};//return user with array of habits
+};
 
 module.exports = { saveHabits, deleteHabits, completeHabits };
