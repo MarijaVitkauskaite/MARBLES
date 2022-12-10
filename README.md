@@ -1,5 +1,5 @@
 # MARBLES
-### Dont lose them!
+#### Dont lose them!
 
 This app was created to help neurodivergent people maintain the most basic every day habits such as brushing teeth or taking a shower. 
 
@@ -12,18 +12,11 @@ This app was created using neurodivergent friendly practises such as:
 - muted, sensory friendly color pallete
 - specific customized font
 
-### TO RUN IT LOCALLY:
-- Clone this repository 
-- npm install both client and server
-- Create an .env file for your IP address and PostgreSQL user information
-- Run the server and database
-- npm start the client and choose with phone to view it on (I recomment iOS, as it was developed for that first)
-- Enjoy playing around!
 
-### TECH STACK: 
+#### Tech stack: 
 - All written in Typescript
 
-Front end: 
+Fron end: 
 - React Native
 
 Back end: 
@@ -32,3 +25,9 @@ Back end:
 
 Testing: 
 - Jest
+
+### CONTRIBUTORS: 
+- Marija Vitkauskaite (me)
+- Marco Lupo (https://github.com/MarcoLupo94)
+- Chenhao Hu (https://github.com/HuchenhaoArvin)
+- Noah Sinnott (https://github.com/noah-sinnott)
