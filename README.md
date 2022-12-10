@@ -1,5 +1,5 @@
 # MARBLES
-Dont lose them!
+#### Dont lose them!
 
 This app was created to help neurodivergent people maintain the most basic every day habits such as brushing teeth or taking a shower. 
 
@@ -11,3 +11,17 @@ This app was created using neurodivergent friendly practises such as:
 - easy and simple UX design
 - muted, sensory friendly color pallete
 - specific customized font
+
+
+#### Tech stack: 
+- All written in Typescript
+
+Fron end: 
+- React Native
+
+Back end: 
+- Express
+- PostgreSQL with Sequelize
+
+Testing: 
+- Jest
