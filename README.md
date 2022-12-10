@@ -16,7 +16,7 @@ This app was created using neurodivergent friendly practises such as:
 #### Tech stack: 
 - All written in Typescript
 
-Fron end: 
+Front end: 
 - React Native
 
 Back end: 
