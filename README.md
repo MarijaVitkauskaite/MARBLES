@@ -32,17 +32,12 @@ This app was created using neurodivergent friendly practises such as:
   <tr> 
     <td>React Native</td> 
     <td>Express</td> 
-    <td>Figma</td> 
-  </tr> 
-  <tr> 
     <td>Auth0</td> 
-    <td>Auth0</td> 
-    <td></td> 
   </tr> 
   <tr> 
     <td></td> 
     <td>PostgreSQL</td> 
-    <td></td> 
+    <td>Figma</td> 
   </tr> 
   <tr> 
     <td></td> 
