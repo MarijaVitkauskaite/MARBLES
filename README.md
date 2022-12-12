@@ -1,5 +1,5 @@
 # MARBLES
-#### Dont lose them!
+#### Don't lose them!
 
 This app was created to help neurodivergent people maintain the most basic every day habits such as brushing teeth or taking a shower. 
 
