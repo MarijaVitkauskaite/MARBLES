@@ -3,7 +3,11 @@
 
 This app was created to help neurodivergent people maintain the most basic every day habits such as brushing teeth or taking a shower. 
 
-The main feature of this application is the horizontally scrolable calendar, where the user can add new habits and edit existing ones: update every day status, delete (see in the video below).
+Features: 
+- Register and login with Auth0
+- Vertically scrollable calendar where the user can add habits
+- Horizontally scrollable calendar where the user can add, update, delete habits and easily scroll to the current date
+- Testing with Jest
 
 https://user-images.githubusercontent.com/105724287/206867949-cabcbf28-7c94-41e2-9d96-5e90f2905785.mp4
 
@@ -13,18 +17,39 @@ This app was created using neurodivergent friendly practises such as:
 - specific customized font
 
 
-#### Tech stack: 
-- All written in Typescript
-
-Front end: 
-- React Native
-
-Back end: 
-- Express
-- PostgreSQL with Sequelize
-
-Testing: 
-- Jest
+#### Tech stack
+<table>
+  <tr>
+    <th>Front end</th>
+    <th>Back end</th>
+    <th>Misc.</th>
+  </tr>
+  <tr> 
+    <td>Typescript</td> 
+    <td>Typescript</td> 
+    <td>Jest</td> 
+  </tr> 
+  <tr> 
+    <td>React Native</td> 
+    <td>Express</td> 
+    <td>Figma</td> 
+  </tr> 
+  <tr> 
+    <td>Auth0</td> 
+    <td>Auth0</td> 
+    <td></td> 
+  </tr> 
+  <tr> 
+    <td></td> 
+    <td>PostgreSQL</td> 
+    <td></td> 
+  </tr> 
+  <tr> 
+    <td></td> 
+    <td>Sequelize</td> 
+    <td></td> 
+  </tr> 
+</table>
 
 ### CONTRIBUTORS: 
 - Marija Vitkauskaite (me)
