@@ -5,7 +5,7 @@ import BottomNav from '../../components/BottomNav/BottomNav';
 import { calendarStyle, styles } from './style';
 
 
-export default function CalendarScroll({ navigation }) {
+export default function CalendarScroll({navigation}) {
   const [selectedDay, setSelectedDay] = useState('');
 
   return (
@@ -22,6 +22,7 @@ export default function CalendarScroll({ navigation }) {
         onDayLongPress={() => {
           navigation.replace('AddHabit');
         }}
+        //@ts-ignore I'm not sure why TS doesn't agree with me overriding theme (from the package)
         theme={calendarStyle}
         data-testid="calendar-list"
         accessible={true}
@@ -29,7 +30,7 @@ export default function CalendarScroll({ navigation }) {
         accessibilityHint="Long press to add a habit"
         accessibilityLanguage="en-US"
       />
-      <BottomNav navigation={navigation} testFn={() => { }} />
+      <BottomNav navigation/>
     </SafeAreaView>
   );
 }

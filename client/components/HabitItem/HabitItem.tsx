@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { Image, Text, Pressable, View } from 'react-native';
 import { Habit } from '../../../lib/api-intefaces';
+import {userContext} from '../../app';
 import * as apiService from '../../ApiService';
-import { userContext } from '../../user-context';
 import styles from './style';
 
 export default function Habits({ habit, selectedDate }) {

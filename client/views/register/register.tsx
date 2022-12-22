@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 import * as apiService from '../../ApiService';
 import styles from './style';
-import { userContext } from '../../user-context';
+import {userContext} from '../../app';
 
 
 export default function Register({ navigation }) {

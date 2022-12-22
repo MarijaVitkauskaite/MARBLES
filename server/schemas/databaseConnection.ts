@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const connection = new Sequelize('marbles', 'admin', 'codeworks', {
+const connection = new Sequelize('marbles', 'marijavitkauskaite', ' ', {
   host: 'localhost',
   dialect: 'postgres',
   logging: false,

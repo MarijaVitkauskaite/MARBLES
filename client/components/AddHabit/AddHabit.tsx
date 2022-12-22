@@ -2,10 +2,12 @@ import { SafeAreaView, Image, View, TextInput, Pressable, Alert } from 'react-na
 import React, { useContext, useState } from 'react';
 import * as apiService from '../../ApiService';
 import styles from './style'
-import { userContext } from '../../user-context';
-export default function AddHabit({ navigation }) {
+import {userContext} from '../../app';
+
+export default function AddHabit({navigation}) {
   const [habit, setHabit] = useState<string>('');
   const [user, setUser] = useContext<any>(userContext)
+
 
   const handleSubmit = async () => {
 

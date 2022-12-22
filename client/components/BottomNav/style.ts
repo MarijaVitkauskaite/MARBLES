@@ -9,7 +9,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    display: 'absolute',
   },
   calendar: {
     height: 35,

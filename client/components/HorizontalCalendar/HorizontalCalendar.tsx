@@ -7,14 +7,14 @@ import CalendarHeader from '../CalendarHeader/CalendarHeader';
 export default function HorizontalCalendar({ selectedDate, setSelectedDate, navigation, today }) {
   const datePast = 180;
   const dateFuture = 90;
-  const scroller = useRef();
+  const scroll = useRef(null);
   const options = { x: datePast * 78.65, y: 0 }
   const dates = useMemo(() => {
     return generateHorizontalCalendarDates(datePast, dateFuture);
   }, []);
 
   const scrollToToday = () => {
-    scroller.current.scrollTo(options);
+    scroll.current.scrollTo(options);
     setSelectedDate && setSelectedDate(today);
   };
 
@@ -33,7 +33,7 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate, navi
         />
         <ScrollView
           testID='scroll'
-          ref={scroller}
+          ref={scroll}
           onContentSizeChange={() => scrollToToday()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}

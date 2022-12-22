@@ -8,9 +8,7 @@ import Habits from './views/habits/habits';
 import Register from './views/register/register';
 import AddHabit from './components/AddHabit/AddHabit';
 import { User } from '../lib/api-intefaces';
-import { userContext } from './user-context';
 
-// TODO  a separate router component file && check
 const Stack = createStackNavigator();
 function MyStack() {
 
@@ -26,13 +24,14 @@ function MyStack() {
   );
 }
 
+export const userContext = createContext(null);
 
 export default function App() {
 
-  const user = useState<User>({ userId: "", email: "", habits: [] });
+  // const [user, setUser] = useState<User>({ userId: "", email: "", habits: [] });
   return (
     <NavigationContainer>
-      <userContext.Provider value={user} >
+      <userContext.Provider value={useState<User>({ userId: "", email: "", habits: [] })}>
         <MyStack />
       </userContext.Provider>
     </NavigationContainer>

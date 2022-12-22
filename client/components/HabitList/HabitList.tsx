@@ -2,13 +2,13 @@ import { useContext } from 'react';
 import { Pressable, View } from 'react-native';
 import { Habit } from '../../../lib/api-intefaces';
 import * as apiService from '../../ApiService';
-import { userContext } from '../../user-context';
+import {userContext} from '../../app';
 import HabitItem from '../HabitItem/HabitItem';
 import styles from './style'
 
 export default function HabitList({ selectedDate }) {
 
-  const [user ,setUser] = useContext(userContext)
+  const [user, setUser] = useContext(userContext)
   const {habits} = user;
 
   const handleDelete = async (habit_id:string) => {

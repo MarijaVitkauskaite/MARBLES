@@ -1,8 +1,6 @@
-import { REACT_APP_LOCAL_IP } from '@dotenv';
-import { User, Habit } from '../lib/api-intefaces'
+import { User } from '../lib/api-intefaces'
 
-
-
+const REACT_APP_LOCAL_IP = 'http://192.168.0.30:3001'
 
 export const register = async (user: User): Promise<User> => {
   try {
@@ -48,21 +46,6 @@ export const sendHabits = async (habit: string, userId: string): Promise<User> =
     console.log(err);
   }
 };
-
-// export const getHabits = async (selectedDate) => {
-//   try {
-//     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
-//       method: 'PUT',
-//       credentials: 'include',
-//       mode: 'cors',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ selectedDate }),
-//     });
-//     return await res.json();
-//   } catch (err) {
-//     return console.log(err);
-//   }
-// };
 
 export const deleteHabits = async (id: string): Promise<User> => {
   try {

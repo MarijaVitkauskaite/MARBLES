@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 import styles from './style';
-import { userContext } from '../../user-context';
+import {userContext} from '../../app';
 
 
 

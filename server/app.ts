@@ -10,8 +10,8 @@ app.use(router);
 
 async function listen() {
   try {
-    app.listen(3000, () => {
-      console.log('Server is running on http://localhost:3000');
+    app.listen(3001, () => {
+      console.log('Server is running on http://localhost:3001');
     });
   } catch (error) {
     console.log('error in SERVER: ', error);
